@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
 import logoFooter from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 
@@ -23,8 +23,7 @@ const Footer = () => {
             <p
               className={`pt-4 font-bold text-opacity-60 w-10/12 md:w-full mx-auto text-center `}
             >
-              Your ultimate destination for exploring, discovering, and
-              celebrating the magic of movies.
+              Turn your time into earnings with ClickCash! Complete simple tasks and get paid instantly.
             </p>
            </div>
           </div>
@@ -32,17 +31,39 @@ const Footer = () => {
             <div className="p-10 flex flex-col md:w-9/12 mx-auto">
               <div className="flex justify-center md:justify-center gap-5 mb-5">
                 <Link
-                  to={"https://www.linkedin.com/in/sanjida-khanam-ice"}
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/sanjida-khanam-ice",
+                    "_blank"
+                  )
+                }
+                  
                   className="text-4xl text-blue-700"
                 >
                   <FaLinkedin></FaLinkedin>
                 </Link>
 
                 <Link
-                  to={"https://www.facebook.com"}
+                  onClick={() =>
+                    window.open(
+                      "https://www.facebook.com/profile.php?id=100034140082279",
+                      "_blank"
+                    )
+                  }
                   className="text-4xl text-blue-600"
                 >
                   <FaFacebook></FaFacebook>
+                </Link>
+                <Link
+                  onClick={() =>
+                    window.open(
+                      "https://github.com/Sanjida-Khanam778",
+                      "_blank"
+                    )
+                  }
+                  className="text-4xl"
+                >
+                  <FaGithub />
                 </Link>
               </div>
 
@@ -52,9 +73,9 @@ const Footer = () => {
               <p
                 className={`text-start md:text-center text-black mb-4 md:mb-0 font-bold text-opacity-70 `}
               >
-                Location: av. Washington 165, NY CA 54003 <br />
-                Phone: +31 85 964 47 25 <br />
-                Email: info@filmyscope.com <br />
+                Location: Dhaka, Bangladesh <br />
+                Phone: +880 1684796286 <br />
+                Email: clickcashbd@gmail.com <br />
               </p>
             </div>
           </div>

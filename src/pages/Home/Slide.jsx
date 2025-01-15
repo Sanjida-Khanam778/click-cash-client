@@ -19,10 +19,11 @@ const Slide = ({ image, text, subtitle }) => {
           </p>
           <br />
           <Link
-            to='/add-job'
-            className='btn w-full bg-red-600 px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-red-700 focus:outline-none focus:bg-gray-500'
+            onClick={() => window.open("https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778", "_blank")}
+            to='/'
+            className='btn w-full px-5 py-3 mt-4 text-sm font-medium bg-[#A35C7A] text-white capitalize transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-[#A35C7A] focus:outline-none focus:bg-[#A35C7A]'
           >
-            Book Your Service
+            Join as Developer
           </Link>
         </div>
       </div>

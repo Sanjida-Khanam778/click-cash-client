@@ -30,27 +30,27 @@ const Banner = () => {
         <SwiperSlide>
           <Slide
             image={bgimg1}
-            text="ElectroCare: Your Gadget's Best Friend"
+            text="Empower Your Earnings"
             subtitle={
-              "Expert Repairs for Phones, Laptops, and Gadgets—Fast, Reliable, Affordable"
+              "Complete Tasks, Earn Money – Simple & Fast!"
             }
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg2}
-            text="Revive Your Devices with ElectroCare"
+            text="Your Microtasks, Your Income"
             subtitle={
-              "From Diagnostics to Repairs, We Bring Your Electronics Back to Life"
+              "Turn Small Efforts into Big Rewards!"
             }
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg3}
-            text="Seamless Solutions for All Your Electronics"
+            text="Earn More, Work Less"
             subtitle={
-              "Trust ElectroCare for Professional Repairs and Outstanding Service"
+              "Flexible Earning Opportunities for Everyone!"
             }
           />
         </SwiperSlide>

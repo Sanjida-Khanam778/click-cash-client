@@ -104,7 +104,17 @@ const Navbar = () => {
                 </Link>
               </>
             )}
-            <button className="btn btn-outline ml-3">Join as Developer</button>
+            <button
+              onClick={() =>
+                window.open(
+                  "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
+                  "_blank"
+                )
+              }
+              className="btn btn-outline ml-3"
+            >
+              Join as Developer
+            </button>
           </div>
         </div>
       </div>
