@@ -1,24 +1,44 @@
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 export const imageUpload = async (imageData) => {
   const formData = new FormData();
   formData.append("image", imageData);
   const { data } = await axios.post(
-    `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMG_HOSTING_KEY}`,
+    `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMG_HOSTING_KEY
+    }`,
     formData
   );
   return data.data.display_url;
 };
 
 export const saveUser = async (user) => {
-
   const axiosPublic = useAxiosPublic();
-  const data=await axiosPublic.post(`/users`, {
+  const data = await axiosPublic.post(`/users`, {
     name: user?.displayName,
     image: user?.photoURL,
     email: user?.email,
     coin: user?.coin,
   });
-console.log(data.data)
+  console.log(data.data);
+};
+
+export const getCoin = async () => {
+  const { user, loading } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const {
+    data: coin,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["/user", user?.email],
+    queryFn: () => {
+      
+    },
+  });
 };

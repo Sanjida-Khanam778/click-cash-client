@@ -7,7 +7,6 @@ import { TbCoinFilled } from "react-icons/tb";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
   const links = (
     <>
       <li>
