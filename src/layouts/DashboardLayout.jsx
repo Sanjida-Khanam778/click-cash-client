@@ -23,7 +23,7 @@ const DashboardLayout = () => {
   return (
     <div className="">
       <nav className=" bg-[#FBF5E5] ">
-        <div className="w-10/12 mx-auto py-4 flex items-center justify-between">
+        <div className="w-10/12 mx-auto py-2 flex items-center justify-between">
           <div className="flex items-center">
             <img className="h-5 md:h-9 mr-2 md:mr-4" src={logo} alt="" />
             <Link
@@ -35,9 +35,9 @@ const DashboardLayout = () => {
               </p>
             </Link>
           </div>
-          <div className="flex items-center gap-6 md:gap-10">
+          <div className="flex items-center gap-4 md:gap-8">
             <div className="flex flex-col items-end">
-              <div className="flex p-2">
+              <div className="flex p-1">
                 <button className="flex items-center px-4 bg-transparent border-r-2 border-black font-bold">
                   <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
                   {coin}
@@ -48,7 +48,7 @@ const DashboardLayout = () => {
                   className="h-8 w-8 ml-3 rounded-full"
                 />
               </div>
-              <div className="flex p-2">
+              <div className="flex p-1">
                 <p className="mr-3 font-medium">{role}</p>
                 <p className="border-l-2 pl-3 font-medium border-black">
                   {user?.displayName}
@@ -62,7 +62,7 @@ const DashboardLayout = () => {
         </div>
       </nav>
       <div className="flex">
-        <div className="min-h-screen w-64 text-white bg-[#C890A7] p-5">
+        <div className="min-h-screen w-80 text-black bg-[#e9ddbf] p-5">
           <ul className="menu">
             <li>
               <NavLink to={"/dashboard/workerHome"}>
