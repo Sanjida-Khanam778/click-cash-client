@@ -1,18 +1,18 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import bgimg1 from "../assets/images/slider1.jpg";
-import bgimg2 from "../assets/images/slider2.jpeg";
-import bgimg3 from "../assets/images/slider3.jpg";
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import Slide from './Slide';
+import bgimg1 from "../../assets/smart.webp";
+import bgimg2 from "../../assets/smart.webp";
+import bgimg3 from "../../assets/smart.webp";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Slide from "./Slide";
 
 const Banner = () => {
-    return (
-        <div className='-z-10 relative'>
-            <Swiper
+  return (
+    <div className="relative">
+      <Swiper
         spaceBetween={30}
         centeredSlides={true}
         loop={true}
@@ -31,26 +31,32 @@ const Banner = () => {
           <Slide
             image={bgimg1}
             text="ElectroCare: Your Gadget's Best Friend"
-            subtitle={'Expert Repairs for Phones, Laptops, and Gadgets—Fast, Reliable, Affordable'}
+            subtitle={
+              "Expert Repairs for Phones, Laptops, and Gadgets—Fast, Reliable, Affordable"
+            }
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg2}
             text="Revive Your Devices with ElectroCare"
-            subtitle={'From Diagnostics to Repairs, We Bring Your Electronics Back to Life'}
+            subtitle={
+              "From Diagnostics to Repairs, We Bring Your Electronics Back to Life"
+            }
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg3}
             text="Seamless Solutions for All Your Electronics"
-            subtitle={'Trust ElectroCare for Professional Repairs and Outstanding Service'}
+            subtitle={
+              "Trust ElectroCare for Professional Repairs and Outstanding Service"
+            }
           />
         </SwiperSlide>
       </Swiper>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Banner;

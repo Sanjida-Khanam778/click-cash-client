@@ -13,16 +13,18 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li>
-        <NavLink to={"/dashboard"}>Dashboard</NavLink>
-      </li>
+      {user && user?.email && (
+        <li>
+          <NavLink to={"/dashboard"}>Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
 
   return (
     <div className={`w-11/12 xl:w-10/12 mx-auto py-3`}>
-      <div className="navbar px-0">
-        <div className="navbar-start">
+      <div className="navbar justify-between px-0">
+        <div className="">
           <div className="dropdown">
             <div
               tabIndex={0}
@@ -52,46 +54,58 @@ const Navbar = () => {
             </ul>
           </div>
           <img className="h-5 md:h-9 mr-2 md:mr-4" src={logo} alt="" />
-          <Link to={'/'} className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont">
-            <p className="tracking-widest">Click<span className="text-[#A35C7A]"> Cash</span></p>
+          <Link
+            to={"/"}
+            className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont"
+          >
+            <p className="tracking-widest">
+              Click<span className="text-[#A35C7A]"> Cash</span>
+            </p>
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className={`flex gap-5 items-center px-1 font-bold`}>{links}</ul>
-        </div>
-        <div className="navbar-end">
-          {user && user?.email ? (
-            <>
-                <button className=" flex items-center px-4 bg-transparent font-bold"><TbCoinFilled className="text-3xl text-[#f1e027] mr-1"/>400</button>
-              <div className="relative group mr-3">
-                <img
-                  referrerPolicy="no-referrer"
-                  src={user?.photoURL}
-                  className="h-12 w-12 rounded-full"
-                />
-                <div className="absolute z-10 w-32 -bottom-8 -right-10 transform -translate-x-1/2 bg-white text-black text-sm px-3 py-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                  {user?.displayName}
+        <div>
+          <div className=" lg:justify-end  hidden lg:flex">
+            <ul className={`flex gap-5 px-1 font-bold`}>{links}</ul>
+          </div>
+          <div className="flex">
+            {user && user?.email ? (
+              <>
+                <button className=" flex items-center px-4 bg-transparent font-bold">
+                  <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
+                  400
+                </button>
+                <div className="relative group mr-3">
+                  <img
+                    referrerPolicy="no-referrer"
+                    src={user?.photoURL}
+                    className="h-12 w-12 rounded-full"
+                  />
+                  <div className="absolute z-10 w-32 -bottom-8 -right-10 transform -translate-x-1/2 bg-white text-black text-sm px-3 py-1 opacity-0 group-hover:opacity-100 transition duration-300">
+                    {user?.displayName}
+                  </div>
                 </div>
-              </div>
-              <Link onClick={logOut}>
-                <button className="btn text-white bg-[#A35C7A] border-none">Logout</button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link className=" mr-3" to={"/login"}>
-                <button className="btn bg-[#C890A7] text-white px-2 md:px-4 border-none">
-                  Login
-                </button>
-              </Link>
-              <Link className="" to={"/signup"}>
-                <button className="btn px-2 md:px-4 bg-[#A35C7A] text-white border-none">
-                  Register
-                </button>
-              </Link>
-            </>
-          )}
-          <button className="btn btn-outline ml-3">Join as Developer</button>
+                <Link onClick={logOut}>
+                  <button className="btn text-white bg-[#A35C7A] border-none">
+                    Logout
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="mx-3" to={"/login"}>
+                  <button className="btn bg-[#C890A7] text-white px-2 md:px-4 border-none">
+                    Login
+                  </button>
+                </Link>
+                <Link className="" to={"/signup"}>
+                  <button className="btn px-2 md:px-4 bg-[#A35C7A] text-white border-none">
+                    Register
+                  </button>
+                </Link>
+              </>
+            )}
+            <button className="btn btn-outline ml-3">Join as Developer</button>
+          </div>
         </div>
       </div>
     </div>
