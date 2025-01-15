@@ -18,6 +18,9 @@ import WorkerHome from '../pages/Dashboard/Worker/WorkerHome'
 import BuyerHome from '../pages/Dashboard/Buyer/BuyerHome'
 import AdminHome from '../pages/Dashboard/Admin/AdminHome'
 import PaymentHistory from '../pages/Dashboard/Buyer/PaymentHistory'
+import BuyerRoute from './BuyerRoute'
+import AdminRoute from './AdminRoute'
+import PrivateRoute from './PrivateRoute'
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +39,7 @@ export const router = createBrowserRouter([
   },
   {
       path: 'dashboard',
-      element:<DashboardLayout></DashboardLayout>
+      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>
     ,
     children: [
       {
@@ -82,7 +85,7 @@ export const router = createBrowserRouter([
       {
         path: 'myTask',
         element: (
-          <MyTask></MyTask>
+          <BuyerRoute><MyTask></MyTask></BuyerRoute>
         ),
       },
       {
@@ -97,7 +100,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
         path: 'manageTask',
