@@ -21,6 +21,7 @@ import PaymentHistory from '../pages/Dashboard/Buyer/PaymentHistory'
 import BuyerRoute from './BuyerRoute'
 import AdminRoute from './AdminRoute'
 import PrivateRoute from './PrivateRoute'
+import Payment from '../pages/Payments/Payment'
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
         element: (
          <PurchaseCoin></PurchaseCoin>
         ),
+      },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
       },
       {
         path: 'paymentHistory',

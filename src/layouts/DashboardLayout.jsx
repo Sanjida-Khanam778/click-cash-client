@@ -34,7 +34,7 @@ const DashboardLayout = () => {
             </Link>
           </div>
           <div className="flex items-center gap-6 md:gap-10">
-            <div className="flex flex-col">
+            <div className="flex flex-col items-end">
               <div className="flex p-2">
                 <button className="flex items-center px-4 bg-transparent border-r-2 border-black font-bold">
                   <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
         </div>
       </nav>
       <div className="flex">
-        <div className="min-h-screen text-white bg-[#C890A7] p-5">
+        <div className="min-h-screen w-64 text-white bg-[#C890A7] p-5">
           <ul className="menu">
             <li>
               <NavLink to={"/dashboard/workerHome"}>
