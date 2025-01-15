@@ -4,9 +4,12 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { TbCoinFilled } from "react-icons/tb";
+import useCoin from "../../hooks/useCoin";
+import { CgSpinnerAlt } from "react-icons/cg";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [ coin, isLoading, refetch]  = useCoin();
   const links = (
     <>
       <li>
@@ -69,10 +72,14 @@ const Navbar = () => {
           <div className="flex">
             {user && user?.email ? (
               <>
-                <button className=" flex items-center px-4 bg-transparent font-bold">
-                  <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
-                  400
-                </button>
+                {isLoading ? (
+                  <CgSpinnerAlt className="animate-spin m-auto" />
+                ) : (
+                  <button className=" flex items-center px-4 bg-transparent font-bold">
+                    <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
+                    {coin}
+                  </button>
+                )}
                 <div className="relative group mr-3">
                   <img
                     referrerPolicy="no-referrer"

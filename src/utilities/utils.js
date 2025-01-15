@@ -2,7 +2,6 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 
 export const imageUpload = async (imageData) => {
@@ -26,19 +25,4 @@ export const saveUser = async (user) => {
     coin: user?.coin,
   });
   console.log(data.data);
-};
-
-export const getCoin = async () => {
-  const { user, loading } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  const {
-    data: coin,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["/user", user?.email],
-    queryFn: () => {
-      
-    },
-  });
 };

@@ -2,10 +2,8 @@ import logo from "../assets/logo.png";
 import {
   FaAd,
   FaCalendar,
-  FaEnvelope,
   FaHome,
   FaList,
-  FaSearch,
   FaShoppingCart,
   FaUsers,
   FaUtensils,
@@ -15,9 +13,13 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { IoNotificationsSharp } from "react-icons/io5";
 import Footer from "../components/Shared/Footer";
+import useCoin from "../hooks/useCoin";
+import useRole from "../hooks/useRole";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
+  const [coin, isLoading, refetch] = useCoin();
+  const [role] = useRole();
   return (
     <div className="">
       <nav className=" bg-[#FBF5E5] ">
@@ -38,7 +40,7 @@ const DashboardLayout = () => {
               <div className="flex p-2">
                 <button className="flex items-center px-4 bg-transparent border-r-2 border-black font-bold">
                   <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
-                  400
+                  {coin}
                 </button>
                 <img
                   referrerPolicy="no-referrer"
@@ -47,14 +49,13 @@ const DashboardLayout = () => {
                 />
               </div>
               <div className="flex p-2">
-                <p className="mr-3 font-medium">role</p>
+                <p className="mr-3 font-medium">{role}</p>
                 <p className="border-l-2 pl-3 font-medium border-black">
-                  {" "}
                   {user?.displayName}
                 </p>
               </div>
             </div>
-            <div className="">
+            <div>
               <IoNotificationsSharp className="text-2xl md:text-4xl" />
             </div>
           </div>
@@ -138,7 +139,6 @@ const DashboardLayout = () => {
                 Manage Task
               </NavLink>
             </li>
-          
           </ul>
         </div>
         <div className="flex flex-col justify-between min-h-screen">

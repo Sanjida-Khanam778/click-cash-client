@@ -2,22 +2,55 @@ import React from "react";
 import SharedTitle from "../../../components/Shared/SharedTitle";
 import { useForm } from "react-hook-form";
 import { imageUpload } from "../../../utilities/utils";
+import useCoin from "../../../hooks/useCoin";
+import { toast } from "react-hot-toast";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
 
 const AddTask = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = async(data) => {
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const [coin, , refetch] = useCoin();
+  const onSubmit = async (data) => {
     console.log(data.taskImg[0]);
-    
-    const taskImg = await imageUpload(data.taskImg[0])
-    console.log(taskImg)
+    const taskImg = await imageUpload(data.taskImg[0]);
+    console.log(taskImg);
+    const taskData = {
+      title: data.title,
+      details: data.details,
+      workers: data.workers,
+      amount: data.amount,
+      date: data.date,
+      submissionInfo: data.submissionInfo,
+      taskImg: taskImg,
+    };
+    // Total payable amount  ( required_workers * payable_amount )
+    const totalPayableAmount = data.workers * data.amount;
+    console.log(totalPayableAmount);
+    if (totalPayableAmount > coin) {
+      toast.error("Not available Coin. Purchase Coin");
+      return navigate("/dashboard/purchaseCoin");
+    }
 
+    const res = await axiosSecure.post("addTask", taskData);
+    console.log(res.data);
+    if (res.data.insertedId) {
+      toast.success("Successfully added task");
+      axiosSecure
+        .patch(`/users/${user.email}`, { coin: totalPayableAmount })
+        .then((res) => {
+          console.log(res.data);
+          refetch();
+        });
+    }
   };
+
   return (
     <div className="my-10 md:my-16 lg:my-24">
+      <ScrollRestoration />
       <SharedTitle title={"add task"} subtitle={"new new"}></SharedTitle>
       <form
         onSubmit={handleSubmit(onSubmit)}
