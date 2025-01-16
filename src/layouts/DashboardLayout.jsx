@@ -9,7 +9,7 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { TbCoinFilled } from "react-icons/tb";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, ScrollRestoration } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { IoNotificationsSharp } from "react-icons/io5";
 import Footer from "../components/Shared/Footer";
@@ -22,6 +22,7 @@ const DashboardLayout = () => {
   const [role] = useRole();
   return (
     <div className="">
+      <ScrollRestoration></ScrollRestoration>
       <nav className=" bg-[#FBF5E5] ">
         <div className="w-10/12 mx-auto py-2 flex items-center justify-between">
           <div className="flex items-center">

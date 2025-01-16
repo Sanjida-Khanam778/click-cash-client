@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SharedTitle from "../../../components/Shared/SharedTitle";
 import { useForm } from "react-hook-form";
 import { imageUpload } from "../../../utilities/utils";
@@ -7,14 +7,17 @@ import { toast } from "react-hot-toast";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { CgSpinnerAlt } from "react-icons/cg";
 
 const AddTask = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
+  const [loading, setLoading] = useState(false)
   const { user } = useAuth();
   const [coin, , refetch] = useCoin();
   const onSubmit = async (data) => {
+    setLoading(true)
     console.log(data.taskImg[0]);
     const taskImg = await imageUpload(data.taskImg[0]);
     console.log(taskImg);
@@ -26,7 +29,7 @@ const AddTask = () => {
       date: data.date,
       submissionInfo: data.submissionInfo,
       taskImg: taskImg,
-      buyer: user?.email
+      buyer: user?.email,
     };
     // Total payable amount  ( required_workers * payable_amount )
     const totalPayableAmount = data.workers * data.amount;
@@ -39,6 +42,7 @@ const AddTask = () => {
     const res = await axiosSecure.post("addTask", taskData);
     console.log(res.data);
     if (res.data.insertedId) {
+      setLoading(false)
       toast.success("Successfully added task");
       axiosSecure
         .patch(`/users/${user.email}`, { coin: totalPayableAmount })
@@ -150,7 +154,11 @@ const AddTask = () => {
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary bg-[#A35C7A] text-white outline-none hover:bg-[#A35C7A]">
-            Add Task
+            {loading ? (
+              <CgSpinnerAlt className="animate-spin m-auto" />
+            ) : (
+              "Add Task"
+            )}
           </button>
         </div>
       </form>

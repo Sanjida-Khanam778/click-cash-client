@@ -1,21 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdDelete, MdOutlineBrowserUpdated } from "react-icons/md";
 import SharedTitle from "../../../components/Shared/SharedTitle";
+import UpdateModal from "../../../components/Modal/UpdateModal";
+import DeleteModal from "../../../components/Modal/DeleteModal";
+import toast from "react-hot-toast";
 
 const MyTask = () => {
   const { user } = useAuth();
+  // delete modal state
+  let [isOpen, setIsOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({});
+  // update modal state
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const axiosSecure = useAxiosSecure();
-  const { data: tasks = [] } = useQuery({
-    queryKey: ["users", user?.email],
+  const { data: tasks = [], refetch } = useQuery({
+    queryKey: ["tasks", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure(`/users/${user?.email}`);
+      const res = await axiosSecure(`/tasks/${user?.email}`);
       return res.data;
     },
   });
   console.log(tasks);
+
+  const handleUpdate = async (task) => {
+    setSelectedTask(task);
+    setIsEditModalOpen(true);
+  };
+
+  const handleDelete= async ()=>{
+    if (selectedTask._id) {
+      try {
+        await axiosSecure.delete(`/tasks/${selectedTask._id}`);
+        refetch(); 
+        setIsOpen(false);
+        toast.success(`Successfully Deleted task: ${selectedTask._id}`)
+      } catch (error) {
+        console.error("Error deleting task:", error);
+      }
+    }
+  }
 
   return (
     <div className="my-10 md:my-16 lg:my-20">
@@ -34,18 +68,25 @@ const MyTask = () => {
           </thead>
           <tbody>
             {tasks.map((task, idx) => (
-              <tr>
+              <tr key={task._id}>
                 <th>{idx + 1}</th>
                 <td>{task.title}</td>
                 <td>{task.details.substring(0, 15)}...</td>
                 <td>{task.date}</td>
                 <td className="text-3xl space-x-5">
-                  <button>
+                  <button onClick={() => handleUpdate(task)}>
                     <MdOutlineBrowserUpdated />
                   </button>
-                  <button>
+                  <UpdateModal
+                    refetch={refetch}
+                    task={selectedTask}
+                    isOpen={isEditModalOpen}
+                    setIsEditModalOpen={setIsEditModalOpen}
+                  ></UpdateModal>
+                  <button onClick={() => { setSelectedTask(task); setIsOpen(true); }}>
                     <MdDelete />
                   </button>
+                  <DeleteModal handleDelete={handleDelete} isOpen={isOpen} closeModal={closeModal}></DeleteModal>
                 </td>
               </tr>
             ))}
