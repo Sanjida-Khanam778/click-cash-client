@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { MdOutlineSubtitles, MdDescription } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const TaskDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -69,7 +70,9 @@ const TaskDetails = () => {
     console.log(submissionData);
     const {data} = await axiosSecure.post('/submission', submissionData)
 
-    console.log(data)
+    if(data.insertedId){
+        toast.success("Submission Successful")
+    }
   };
 
   return (
@@ -87,7 +90,7 @@ const TaskDetails = () => {
             <h2 className="text-2xl font-semibold flex items-center gap-2">
               {title}
             </h2>
-            <p className=" mt-2 flex items-center gap-2 justify-center">
+            <p className=" mt-2 text-3xl flex items-center gap-2 justify-center">
               <FaDollarSign className="text-green-500" />
               {amount}
             </p>
