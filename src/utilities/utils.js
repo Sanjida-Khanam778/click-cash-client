@@ -1,8 +1,5 @@
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import axios from "axios";
-import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../hooks/useAuth";
 
 export const imageUpload = async (imageData) => {
   const formData = new FormData();

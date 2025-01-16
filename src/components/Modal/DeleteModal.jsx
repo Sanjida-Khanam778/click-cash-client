@@ -42,7 +42,7 @@ import {
                   </DialogTitle>
                   <div className='mt-2'>
                     <p className='text-sm text-gray-500'>
-                      Are you sure? Want to delete the task permanently?
+                      Want to delete the task permanently?
                     </p>
                   </div>
                   <hr className='mt-8 ' />
