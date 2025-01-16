@@ -1,116 +1,120 @@
-import { createBrowserRouter } from 'react-router-dom'
-import MainLayout from '../layouts/MainLayout'
-import Home from '../pages/Home/Home'
-import Login from '../pages/Login/Login'
-import Signup from '../pages/Signup/Signup'
-import DashboardLayout from '../layouts/DashboardLayout'
-import ErrorPage from '../pages/ErrorPage/ErrorPage'
-import MyHome from '../pages/Dashboard/Common/MyHome'
-import MySubmissions from '../pages/Dashboard/Worker/MySubmissions'
-import TaskList from '../pages/Dashboard/Worker/TaskList'
-import Withdrawals from '../pages/Dashboard/Worker/Withdrawals'
-import ManageUsers from '../pages/Dashboard/Admin/ManageUsers'
-import ManageTask from '../pages/Dashboard/Admin/ManageTask'
-import PurchaseCoin from '../pages/Dashboard/Buyer/PurchaseCoin'
-import MyTask from '../pages/Dashboard/Buyer/MyTask'
-import AddTask from '../pages/Dashboard/Buyer/AddTask'
-import WorkerHome from '../pages/Dashboard/Worker/WorkerHome'
-import BuyerHome from '../pages/Dashboard/Buyer/BuyerHome'
-import AdminHome from '../pages/Dashboard/Admin/AdminHome'
-import PaymentHistory from '../pages/Dashboard/Buyer/PaymentHistory'
-import BuyerRoute from './BuyerRoute'
-import AdminRoute from './AdminRoute'
-import PrivateRoute from './PrivateRoute'
-import Payment from '../pages/Payments/Payment'
-
+import { createBrowserRouter } from "react-router-dom";
+import MainLayout from "../layouts/MainLayout";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import Signup from "../pages/Signup/Signup";
+import DashboardLayout from "../layouts/DashboardLayout";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import MyHome from "../pages/Dashboard/Common/MyHome";
+import MySubmissions from "../pages/Dashboard/Worker/MySubmissions";
+import TaskList from "../pages/Dashboard/Worker/TaskList";
+import Withdrawals from "../pages/Dashboard/Worker/Withdrawals";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import ManageTask from "../pages/Dashboard/Admin/ManageTask";
+import PurchaseCoin from "../pages/Dashboard/Buyer/PurchaseCoin";
+import MyTask from "../pages/Dashboard/Buyer/MyTask";
+import AddTask from "../pages/Dashboard/Buyer/AddTask";
+import WorkerHome from "../pages/Dashboard/Worker/WorkerHome";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
+import BuyerRoute from "./BuyerRoute";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
+import Payment from "../pages/Payments/Payment";
+import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome";
+import TaskDetails from "../pages/Dashboard/Worker/TaskDetails";
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
-      
-    { path: '/login', element: <Login /> },
-    { path: '/signup', element: <Signup /> },
+
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
     ],
   },
   {
-      path: 'dashboard',
-      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>
-    ,
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
-        element: (
-          <MyHome></MyHome>
-        ),
+        element: <MyHome></MyHome>,
       },
       {
-        path: 'workerHome',
-        element: <WorkerHome></WorkerHome>
+        path: "workerHome",
+        element: <WorkerHome></WorkerHome>,
       },
       {
-        path: 'buyerHome',
-        element: <BuyerHome></BuyerHome>
+        path: "buyerHome",
+        element: <BuyerHome></BuyerHome>,
       },
       {
-        path: 'adminHome',
-        element: <AdminHome></AdminHome>
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
       },
       {
-        path: 'mySubmissions',
+        path: "mySubmissions",
         element: <MySubmissions></MySubmissions>,
       },
       {
-        path: 'taskList',
+        path: "taskList",
+        element: <TaskList></TaskList>,
+      },
+      {
+        path: "taskDetails/:id",
+        element: <TaskDetails></TaskDetails>,
+       
+      },
+      {
+        path: "withdrawals",
+        element: <Withdrawals></Withdrawals>,
+      },
+      {
+        path: "addTask",
+        element: <AddTask></AddTask>,
+      },
+      {
+        path: "myTask",
         element: (
-          <TaskList></TaskList>
+          <BuyerRoute>
+            <MyTask></MyTask>
+          </BuyerRoute>
         ),
       },
       {
-        path: 'withdrawals',
+        path: "purchaseCoin",
+        element: <PurchaseCoin></PurchaseCoin>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "manageUsers",
         element: (
-          <Withdrawals></Withdrawals>
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
         ),
       },
       {
-        path: 'addTask',
-        element: (
-          <AddTask></AddTask>
-        ),
+        path: "manageTask",
+        element: <ManageTask></ManageTask>,
       },
-      {
-        path: 'myTask',
-        element: (
-          <BuyerRoute><MyTask></MyTask></BuyerRoute>
-        ),
-      },
-      {
-        path: 'purchaseCoin',
-        element: (
-         <PurchaseCoin></PurchaseCoin>
-        ),
-      },
-      {
-        path: 'payment',
-        element: <Payment></Payment>
-      },
-      {
-        path: 'paymentHistory',
-        element: <PaymentHistory></PaymentHistory>
-      },
-      {
-        path: 'manageUsers',
-        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
-      },
-      {
-        path: 'manageTask',
-        element: <ManageTask></ManageTask>
-      }
     ],
   },
-])
+]);

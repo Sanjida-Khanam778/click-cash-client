@@ -30,6 +30,8 @@ const AddTask = () => {
       submissionInfo: data.submissionInfo,
       taskImg: taskImg,
       buyer: user?.email,
+      buyerName: user?.displayName,
+      buyerImg: user?.photoURL
     };
     // Total payable amount  ( required_workers * payable_amount )
     const totalPayableAmount = data.workers * data.amount;
