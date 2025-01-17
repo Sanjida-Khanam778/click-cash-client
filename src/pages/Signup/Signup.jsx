@@ -5,10 +5,12 @@ import { toast } from "react-hot-toast";
 import { imageUpload, saveUser } from "../../utilities/utils";
 import { useState } from "react";
 import { CgSpinnerAlt } from "react-icons/cg";
+import useCoin from "../../hooks/useCoin";
 
 const SignUp = () => {
   const [role, setRole] = useState("Worker");
   const [coin, setCoin] = useState(null);
+  const [, , refetch] = useCoin()
   const [error, setError] = useState("");
   const { createUser, updateUserProfile, signInWithGoogle, loading, setLoading } =
     useAuth();
@@ -49,7 +51,7 @@ const SignUp = () => {
       console.log("Update profile", result.user);
       // save user info in db if the user is new
       await saveUser({ ...result?.user, coin });
-
+      refetch()
       navigate(from, { replace: true });
       toast.success("Signup Successful");
     } catch (err) {

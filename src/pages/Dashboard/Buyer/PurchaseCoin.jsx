@@ -12,7 +12,7 @@ const CoinCards = () => {
   const navigate = useNavigate();
 
   const handlePayment = (price) => {
-    navigate(`/dashboard/payment?amount=${price}`); // Redirects to Stripe Checkout page
+    navigate(`/dashboard/payment?amount=${price}`);
   };
 
   return (

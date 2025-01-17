@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useCoin from "../../hooks/useCoin";
 
 const CheckoutForm = ({price}) => {
   const { user } = useAuth();
+  const [, , refetch] = useCoin()
   const navigate = useNavigate()
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -66,16 +68,14 @@ const CheckoutForm = ({price}) => {
         const payment = {
           email: user.email,
           transactionId: paymentIntent.id,
-        //   cartIds: cart.map((item) => item._id),
-        //   menuItemIds: cart.map((item) => item.menuId),
           price: parseInt(price),
           date: new Date(),
         //   status: "pending"
         };
         const res = await axiosSecure.post("/payments", payment);
         console.log("payment saved", res.data);
-        // refetch();
         if (res.data?.insertedId) {
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",

@@ -18,7 +18,7 @@ import useRole from "../hooks/useRole";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
-  const [coin, isLoading, refetch] = useCoin();
+  const [coin, isLoading] = useCoin();
   const [role] = useRole();
   return (
     <div className="">
