@@ -82,7 +82,7 @@ const MyTask = () => {
                 <td>{task.details.substring(0, 15)}...</td>
                 <td>{task.submissionInfo.substring(0, 20)}...</td>
                 <td>{task.date}</td>
-                <td className="text-3xl space-x-5">
+                <td className="text-3xl space-x-5 flex">
                   <button onClick={() => handleUpdate(task)}>
                     <MdOutlineBrowserUpdated />
                   </button>

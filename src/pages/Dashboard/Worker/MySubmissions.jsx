@@ -16,6 +16,7 @@ const MySubmissions = () => {
     },
   });
   if (isLoading) return <p className="text-center text-lg">Loading...</p>;
+  console.log(submission)
   return (
     <div className="my-10 lg:my-20">
       
@@ -40,11 +41,11 @@ const MySubmissions = () => {
                 <td className="text-center">{item.title}</td>
                 <td className="text-center">
                   <div className="flex items-center gap-3">
-                    <div className="avatar">
+                    {/* <div className="avatar">
                       <div className="mask mask-squircle h-8 w-8">
-                        <img src={item.buyer.buyerImg} alt={item.buyerName} />
+                        <img src={item.buyer.buyerImg} alt={item.buyer.buyerName} />
                       </div>
-                    </div>
+                    </div> */}
                     <div>
                       <div className="font-bold">{item.buyer.buyerName}</div>
                       <div className="text-sm opacity-50">
