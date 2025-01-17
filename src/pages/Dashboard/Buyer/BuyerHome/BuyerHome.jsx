@@ -1,10 +1,10 @@
-import States from './States';
+import BuyerStates from './BuyerStates';
 import TaskReview from './TaskReview';
 
 const BuyerHome = () => {
     return (
         <div>
-            <States></States>
+            <BuyerStates></BuyerStates>
             <TaskReview></TaskReview>
         </div>
     );

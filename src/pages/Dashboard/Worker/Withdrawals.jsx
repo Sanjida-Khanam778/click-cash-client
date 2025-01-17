@@ -149,7 +149,7 @@ const Withdrawals = () => {
           <button
             type="submit"
             className={`w-full px-4 py-2 text-white font-semibold rounded-lg transition-all ${
-              amount < 10 && amount>0 
+              amount < 10 && amount > 0
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-[#A35C7A] hover:bg-[#A35C7A]"
             }`}

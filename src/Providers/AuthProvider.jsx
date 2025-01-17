@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const signIn = (email, password) => {
-    setLoading(true)
+    // setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
   }
 
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser)
       console.log('CurrentUser', currentUser)
 
-      if (currentUser) {
+      if (currentUser && currentUser?.email) {
         console.log(currentUser.email);
         const userInfo = {
           email: currentUser.email,

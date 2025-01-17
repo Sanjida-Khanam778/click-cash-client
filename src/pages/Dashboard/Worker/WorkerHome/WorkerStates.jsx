@@ -1,10 +1,10 @@
 import React from "react";
 import SharedTitle from "../../../../components/Shared/SharedTitle";
 
-const States = () => {
+const WorkerStates = () => {
   return (
-    <div className=" flex flex-col justify-center items-center my-10">
-        <SharedTitle title={'Buyer states'} subtitle={'look at the stats'}></SharedTitle>
+    <div className="flex flex-col justify-center items-center my-10 lg:my-20">
+      <SharedTitle title={"WorkerStates"}></SharedTitle>
       <div className="stats shadow">
         <div className="stat">
           <div className="stat-figure text-secondary">
@@ -73,4 +73,4 @@ const States = () => {
   );
 };
 
-export default States;
+export default WorkerStates;

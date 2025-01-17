@@ -14,15 +14,14 @@ import ManageTask from "../pages/Dashboard/Admin/ManageTask";
 import PurchaseCoin from "../pages/Dashboard/Buyer/PurchaseCoin";
 import MyTask from "../pages/Dashboard/Buyer/MyTask";
 import AddTask from "../pages/Dashboard/Buyer/AddTask";
-import WorkerHome from "../pages/Dashboard/Worker/WorkerHome";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
 import BuyerRoute from "./BuyerRoute";
-import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../pages/Payments/Payment";
 import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome";
 import TaskDetails from "../pages/Dashboard/Worker/TaskDetails";
+import WorkerHome from "../pages/Dashboard/Worker/WorkerHome/WorkerHome";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -73,7 +72,6 @@ export const router = createBrowserRouter([
       {
         path: "taskDetails/:id",
         element: <TaskDetails></TaskDetails>,
-       
       },
       {
         path: "withdrawals",
@@ -105,11 +103,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "manageUsers",
-        element: (
-          <AdminRoute>
-            <ManageUsers></ManageUsers>
-          </AdminRoute>
-        ),
+        element: <ManageUsers></ManageUsers>,
       },
       {
         path: "manageTask",

@@ -6,7 +6,8 @@ import { saveUser } from "../../utilities/utils";
 import { CgSpinnerAlt } from "react-icons/cg";
 
 const Login = () => {
-  const { signIn, signInWithGoogle, loading, setLoading, user } = useAuth();
+  const { signIn, setUser, signInWithGoogle, loading, setLoading, user } =
+    useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -21,12 +22,13 @@ const Login = () => {
 
     try {
       //User Login
-      await signIn(email, password);
+      const res = await signIn(email, password);
+      setUser(res?.user);
       navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
       console.log(err);
-      setLoading(false)
+      setLoading(false);
       toast.error(err?.message);
     }
   };
@@ -37,7 +39,7 @@ const Login = () => {
       //User Registration using google
       const data = await signInWithGoogle();
       // save user info in db if the user is new
-      await saveUser({...data?.user, coin:0})
+      await saveUser({ ...data?.user, coin: 0 });
       navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
@@ -46,7 +48,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex justify-center mb-10 md:mb-16 items-center min-h-screen bg-white">
+    <div className="flex justify-center my-10 md:my-16 items-center bg-white">
       <div className="flex flex-col max-w-md p-6 rounded-lg sm:p-10 bg-[#FBF5E5] text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Log In</h1>
@@ -111,7 +113,7 @@ const Login = () => {
             Forgot password?
           </button>
         </div>
-        
+
         <div
           onClick={handleGoogleSignIn}
           className="flex justify-center border-[#A35C7A] items-center space-x-2 border p-2 rounded-lg border-rounded cursor-pointer"
