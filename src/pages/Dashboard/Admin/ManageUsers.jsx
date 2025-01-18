@@ -1,56 +1,102 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SharedTitle from "../../../components/Shared/SharedTitle";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const ManageUsers = () => {
+  const axiosSecure = useAxiosSecure();
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["allUsers"],
+    queryFn: async (req, res) => {
+      const { data } = await axiosSecure("/allUsers");
+      return data;
+    },
+  });
+
+  const handleRole = async (e, user) => {
+    const role = e.target.value;
+    console.log(typeof role, user.email);
+   
+    try {
+      const response = await axiosSecure.patch(
+        `/users/role/${user?.email}`,
+        {role}
+      );
+
+        if (response.data.modifiedCount > 0) {
+          refetch();
+          toast.success("User role updated successfully");
+        }
+    } catch (error) {
+      toast.error("Failed to update user role");
+    }
+  };
+
+  const handleDelete=async id=>{
+    try {
+        const response = await axiosSecure.delete(
+          `/users/role/${id}`
+        );
+  
+          if (response.data.deletedCount > 0) {
+            refetch();
+            toast.success("User deleted successfully");
+          }
+      } catch (error) {
+        toast.error("Failed to update user role");
+      }
+  }
+
   return (
-    <div>
+    <div className="my-10 lg:my-20">
       <SharedTitle title={"Manage Users"}></SharedTitle>
       <div className="overflow-x-auto w-10/12 mx-auto border-y border-[#A35C7A]">
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="md:text-lg text-center">
+            <tr className="text-lg text-center">
               <th>#</th>
-              <th>Job</th>
-              <th>Buyer</th>
-              <th>Submission Details</th>
-              <th>Payable amount</th>
-              <th>Status</th>
+              <th>User</th>
+              <th>Role</th>
+              <th>Coin</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {submission.map((item, idx) => (
-              <tr>
+            {users.map((user, idx) => (
+              <tr key={user._id}>
                 <th className="text-center">{idx + 1}</th>
-                <td className="text-center">{item.title}</td>
                 <td className="text-center">
                   <div className="flex items-center gap-3">
-                    {/* <div className="avatar">
-                                  <div className="mask mask-squircle h-8 w-8">
-                                    <img src={item.buyer.buyerImg} alt={item.buyer.buyerName} />
-                                  </div>
-                                </div> */}
-                    <div>
-                      <div className="font-bold">{item.buyer.buyerName}</div>
-                      <div className="text-sm opacity-50">
-                        {item.buyer.buyerEmail}
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-8 w-8">
+                        <img src={user.image} alt={user?.name} />
                       </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{user?.name}</div>
+                      <div className="text-sm opacity-50">{user.email}</div>
                     </div>
                   </div>
                 </td>
-                <td className="text-center">
-                  {item.submissionDetails.substring(0, 12)}... <br />
-                  <span className="badge badge-ghost badge-sm">
-                    {format(new Date(item.submitDate), "MMMM dd, yyyy")}
-                  </span>
-                </td>
-                <td className="text-center">$ {item.amount}</td>
-                <td
-                  className={`${
-                    item.status === "Pending" && "text-red-500"
-                  } font-bold text-center`}
-                >
-                  {item.status}
+                <td className="text-center">{user?.role}</td>
+                <td className="text-center">{user?.coin}</td>
+                <td className="flex gap-2">
+                  <button onClick={()=>handleDelete(user?._id)} className="btn btn-xs">Remove</button>
+
+                  <select
+                    value={user?.role}
+                    onChange={(e) => handleRole(e, user)}
+                    className="select select-bordered select-xs w-full max-w-xs"
+                  >
+                    <option disabled selected>
+                        Update Role
+                      </option>
+                    <option value="Admin">Admin</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Worker">Worker</option>
+                  </select>
                 </td>
               </tr>
             ))}
