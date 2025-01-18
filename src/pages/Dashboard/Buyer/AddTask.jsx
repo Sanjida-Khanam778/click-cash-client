@@ -24,7 +24,7 @@ const AddTask = () => {
     const taskData = {
       title: data.title,
       details: data.details,
-      workers: data.workers,
+      workers: parseInt(data.workers),
       amount: data.amount,
       date: data.date,
       submissionInfo: data.submissionInfo,

@@ -19,13 +19,13 @@ const TaskDetails = () => {
   const { id } = useParams();
   const { user } = useAuth();
 
-  const { data: task = {}, isLoading } = useQuery({
+  const { data: task = {}, isLoading, refetch } = useQuery({
     queryKey: ["task-details", id],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/task/${id}`);
       return data;
     },
-    enabled: !!id, // Prevents unnecessary API calls
+    enabled: !!id,
   });
 
   if (isLoading) return <p className="text-center text-lg">Loading...</p>;
@@ -64,14 +64,16 @@ const TaskDetails = () => {
       taskImg,
       submissionDetails,
       title,
-      workers,
+      workers: parseInt(workers),
       status: "Pending"
     };
     console.log(submissionData);
     const {data} = await axiosSecure.post('/submission', submissionData)
-
+    
+    
     if(data.insertedId){
-        toast.success("Submission Successful")
+      toast.success("Submission Successful")
+      refetch()
     }
   };
 

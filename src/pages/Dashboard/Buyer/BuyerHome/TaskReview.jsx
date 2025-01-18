@@ -36,14 +36,14 @@ const TaskReview = () => {
   };
 
   const handleApproval = async (submission) => {
-    const coin = parseInt(submission.amount);
+    const amount = parseInt(submission.amount);
     // console.log(submission.amount)
 
     try {
       const { data } = await axiosSecure.patch(
         `/submission/${submission?._id}`,
         {
-          coin,
+          amount,
         }
       );
       if (data.modifiedCount) {
