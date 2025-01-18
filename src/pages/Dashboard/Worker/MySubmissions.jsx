@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SharedTitle from "../../../components/Shared/SharedTitle";
@@ -8,19 +8,34 @@ import { format } from "date-fns";
 const MySubmissions = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: submission, isLoading } = useQuery({
+  const [currentPage, setCurrentPage] = useState(1);
+  const submissionsPerPage = 5; // Number of submissions per page
+
+  const { data: submission = [], isLoading } = useQuery({
     queryKey: ["my-submission", user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/mySubmission/${user?.email}`);
       return data;
     },
   });
+
   if (isLoading) return <p className="text-center text-lg">Loading...</p>;
-  console.log(submission)
+
+  // Calculate pagination details
+  const indexOfLastSubmission = currentPage * submissionsPerPage;
+  const indexOfFirstSubmission = indexOfLastSubmission - submissionsPerPage;
+  const currentSubmissions = submission.slice(
+    indexOfFirstSubmission,
+    indexOfLastSubmission
+  );
+  const totalPages = Math.ceil(submission.length / submissionsPerPage);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="my-10 lg:my-20">
-      
-      <SharedTitle title={"My submissions"} subtitle={""}></SharedTitle>
+      <SharedTitle title={"My Submissions"} subtitle={""}></SharedTitle>
       <div className="overflow-x-auto w-10/12 mx-auto border-y border-[#A35C7A]">
         <table className="table">
           {/* head */}
@@ -30,22 +45,19 @@ const MySubmissions = () => {
               <th>Job</th>
               <th>Buyer</th>
               <th>Submission Details</th>
-              <th>Payable amount</th>
+              <th>Payable Amount</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {submission.map((item, idx) => (
-              <tr>
-                <th className="text-center">{idx + 1}</th>
+            {currentSubmissions.map((item, idx) => (
+              <tr key={idx}>
+                <th className="text-center">
+                  {indexOfFirstSubmission + idx + 1}
+                </th>
                 <td className="text-center">{item.title}</td>
                 <td className="text-center">
                   <div className="flex items-center gap-3">
-                    {/* <div className="avatar">
-                      <div className="mask mask-squircle h-8 w-8">
-                        <img src={item.buyer.buyerImg} alt={item.buyer.buyerName} />
-                      </div>
-                    </div> */}
                     <div>
                       <div className="font-bold">{item.buyer.buyerName}</div>
                       <div className="text-sm opacity-50">
@@ -62,7 +74,11 @@ const MySubmissions = () => {
                 </td>
                 <td className="text-center">$ {item.amount}</td>
                 <td
-                  className={`${item.status === "Pending" && "text-red-500"} ${item.status === "Approved" && "text-green-500"} font-medium text-center`}
+                  className={`${item.status === "Rejected" && "text-red-500"} ${
+                    item.status === "Pending" && "text-yellow-500"
+                  } ${
+                    item.status === "Approved" && "text-green-500"
+                  } font-medium text-center`}
                 >
                   {item.status}
                 </td>
@@ -70,6 +86,22 @@ const MySubmissions = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      {/* Pagination */}
+      <div className="flex justify-center mt-6">
+        {[...Array(totalPages)].map((_, pageIndex) => (
+          <button
+            key={pageIndex}
+            onClick={() => handlePageChange(pageIndex + 1)}
+            className={`px-4 py-2 mx-1 rounded-lg ${
+              currentPage === pageIndex + 1
+                ? "bg-[#A35C7A] text-white"
+                : "bg-gray-200 text-gray-800"
+            } hover:bg-[#C890A7] hover:text-white`}
+          >
+            {pageIndex + 1}
+          </button>
+        ))}
       </div>
     </div>
   );

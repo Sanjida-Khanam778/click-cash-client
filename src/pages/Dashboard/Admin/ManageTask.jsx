@@ -70,7 +70,7 @@ const ManageTask = () => {
                 <td>{task.details.substring(0, 15)}...</td>
                 <td>{task.buyer}</td>
                 <td>{task.date}</td>
-                <td className="text-3xl flex">
+                <td className="text-3xl">
                   <button
                     onClick={() => {
                       setSelectedTask(task);
