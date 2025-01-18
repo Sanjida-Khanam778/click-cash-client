@@ -49,7 +49,7 @@ const SubmissionModal = ({
               <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <DialogTitle
                   as="h3"
-                  className="text-lg font-medium text-center leading-6 text-gray-900"
+                  className="text-lg lg:text-3xl font-medium text-center leading-6 text-gray-900"
                 >
                   Submission Details
                 </DialogTitle>

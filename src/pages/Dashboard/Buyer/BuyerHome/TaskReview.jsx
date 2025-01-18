@@ -4,6 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import SubmissionModal from "../../../../components/Modal/SubmissionModal";
+import toast from "react-hot-toast";
 
 const TaskReview = () => {
   const { user } = useAuth();
@@ -20,7 +21,7 @@ const TaskReview = () => {
     setIsOpen(false);
   }
 
-  const { data: submissions = [] } = useQuery({
+  const { data: submissions = [], refetch } = useQuery({
     queryKey: ["buyer-submissions"],
     queryFn: async () => {
       const response = await axiosSecure(
@@ -33,7 +34,29 @@ const TaskReview = () => {
     setSelectedTask(submission);
     setIsEditModalOpen(true);
   };
-  console.log(submissions);
+
+  const handleApproval = async (submission) => {
+    const coin = parseInt(submission.amount);
+    // console.log(submission.amount)
+
+    try {
+      const { data } = await axiosSecure.patch(
+        `/submission/${submission?._id}`,
+        {
+          coin,
+        }
+      );
+      if (data.modifiedCount) {
+        refetch()
+        // withdrawRefetch()
+        toast.success("Task is approved");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
+  // console.log(submissions);
   return (
     <div>
       <SharedTitle
@@ -75,7 +98,12 @@ const TaskReview = () => {
                   ></SubmissionModal>
                 </td>
                 <td className="flex gap-2">
-                  <button className="btn">Approve</button>
+                  <button
+                    onClick={() => handleApproval(submission)}
+                    className="btn"
+                  >
+                    Approve
+                  </button>
 
                   <button className="btn">Reject</button>
                 </td>
