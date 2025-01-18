@@ -19,7 +19,11 @@ const TaskDetails = () => {
   const { id } = useParams();
   const { user } = useAuth();
 
-  const { data: task = {}, isLoading, refetch } = useQuery({
+  const {
+    data: task = {},
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["task-details", id],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/task/${id}`);
@@ -41,39 +45,42 @@ const TaskDetails = () => {
     taskImg,
     title,
     workers,
-    _id
+    _id,
   } = task;
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const submissionDetails=e.target.subDetails.value
+    const submissionDetails = e.target.subDetails.value;
     const submissionData = {
       submitDate: new Date(),
       taskId: _id,
-      worker:{
+      worker: {
         workerEmail: user?.email,
-        workerName: user?.displayName
+        workerName: user?.displayName,
       },
       amount,
-      buyer:{
+      buyer: {
         buyerName,
-        buyerEmail: buyer
+        buyerEmail: buyer,
       },
-      completionDate:date,
+      completionDate: date,
       details,
       submissionInfo,
       taskImg,
       submissionDetails,
       title,
       workers: parseInt(workers),
-      status: "Pending"
+      status: "Pending",
     };
     console.log(submissionData);
-    const {data} = await axiosSecure.post('/submission', submissionData)
-    
-    
-    if(data.insertedId){
-      toast.success("Submission Successful")
-      refetch()
+    try{
+      const { data } = await axiosSecure.post("/submission", submissionData);
+
+    if (data.insertedId) {
+      toast.success("Submission Successful");
+      refetch();
+    }
+    }catch(error){
+      toast.error(error.response.data.message)
     }
   };
 

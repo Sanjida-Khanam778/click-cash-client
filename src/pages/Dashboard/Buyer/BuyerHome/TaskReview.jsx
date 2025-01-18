@@ -47,7 +47,7 @@ const TaskReview = () => {
         }
       );
       if (data.modifiedCount) {
-        refetch()
+        refetch();
         // withdrawRefetch()
         toast.success("Task is approved");
       }
@@ -56,7 +56,24 @@ const TaskReview = () => {
       toast.error(error.response.data.message);
     }
   };
-  // console.log(submissions);
+
+  const handleReject = async (id) => {
+    console.log(id);
+    try {
+      const { data } = await axiosSecure.patch(
+        `/submission/${id}?reject=${true}`
+      );
+      if (data.modifiedCount) {
+        refetch();
+        // withdrawRefetch()
+        toast.success("Task is rejected");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
+  
   return (
     <div>
       <SharedTitle
@@ -105,7 +122,12 @@ const TaskReview = () => {
                     Approve
                   </button>
 
-                  <button className="btn">Reject</button>
+                  <button
+                    onClick={() => handleReject(submission._id)}
+                    className="btn"
+                  >
+                    Reject
+                  </button>
                 </td>
               </tr>
             ))}
