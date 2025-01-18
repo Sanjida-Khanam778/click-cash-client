@@ -47,7 +47,7 @@ const AddTask = () => {
       setLoading(false)
       toast.success("Successfully added task");
       axiosSecure
-        .patch(`/users/${user.email}`, { coin: totalPayableAmount })
+        .patch(`/users/${user?.email}`, { coin: totalPayableAmount })
         .then((res) => {
           console.log(res.data);
           refetch();

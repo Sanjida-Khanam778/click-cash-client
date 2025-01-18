@@ -53,7 +53,7 @@ const MyTask = () => {
         setIsOpen(false);
         toast.success(`Successfully Deleted task: ${selectedTask.title}`);
       } catch (error) {
-        console.error("Error deleting task:", error);
+        toast.error("Error deleting task:", error);
       }
     }
   };
@@ -69,6 +69,8 @@ const MyTask = () => {
               <th>#</th>
               <th>Task Title</th>
               <th>Task Details</th>
+              <th>Required Workers</th>
+              <th>Payable Amount</th>
               <th>Submission Info</th>
               <th>Date</th>
               <th>Action</th>
@@ -76,10 +78,12 @@ const MyTask = () => {
           </thead>
           <tbody>
             {tasks.map((task, idx) => (
-              <tr key={task._id}>
+              <tr key={task._id} className="text-center">
                 <th>{idx + 1}</th>
                 <td>{task.title}</td>
                 <td>{task.details.substring(0, 15)}...</td>
+                <td>{task.workers}</td>
+                <td>$ {task.amount}</td>
                 <td>{task.submissionInfo.substring(0, 20)}...</td>
                 <td>{task.date}</td>
                 <td className="text-3xl space-x-5 flex">

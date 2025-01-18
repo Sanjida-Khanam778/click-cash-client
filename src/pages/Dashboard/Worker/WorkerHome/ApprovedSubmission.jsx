@@ -2,17 +2,19 @@ import React from "react";
 import SharedTitle from "../../../../components/Shared/SharedTitle";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useAuth from "../../../../hooks/useAuth";
 
 const ApprovedSubmission = () => {
-    // const axiosSecure = useAxiosSecure()
-    // const {data: users=[]} = useQuery({
-    //     queryKey:['allUsers'],
-    //     queryFn: async(req, res)=>{
-    //         const res = await axiosSecure("allUsers")
-    //         return res.data
-    //     }
-    // })
-    // console.log(users)
+  const {user} = useAuth()
+    const axiosSecure = useAxiosSecure()
+    const {data: submissions=[]} = useQuery({
+        queryKey:['approved-submission'],
+        queryFn: async(req, res)=>{
+            const response = await axiosSecure(`/mySubmission/${user?.email}?approved=${true}`)
+            return response.data
+        }
+    })
+    console.log(submissions)
   return (
     <div>
       <SharedTitle title={"Approved Submission"}></SharedTitle>
@@ -22,10 +24,10 @@ const ApprovedSubmission = () => {
           <thead>
             <tr className="text-lg">
               <th>#</th>
-              <th>User</th>
-              <th>Role</th>
-              <th>Coin</th>
-              <th>Action</th>
+              <th>Task Title</th>
+              <th>Payable Amount</th>
+              <th>Buyer</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
