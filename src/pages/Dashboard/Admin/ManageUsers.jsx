@@ -3,9 +3,11 @@ import SharedTitle from "../../../components/Shared/SharedTitle";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
+  
   const { data: users = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async (req, res) => {
@@ -34,18 +36,37 @@ const ManageUsers = () => {
   };
 
   const handleDelete=async id=>{
-    try {
-        const response = await axiosSecure.delete(
-          `/users/role/${id}`
-        );
-  
-          if (response.data.deletedCount > 0) {
-            refetch();
-            toast.success("User deleted successfully");
-          }
-      } catch (error) {
-        toast.error("Failed to update user role");
-      }
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+            try {
+                const response = await axiosSecure.delete(
+                  `/users/${id}`
+                );
+          
+                  if (response.data.deletedCount > 0) {
+                    refetch();
+                    // toast.success("User deleted successfully");
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+                  }
+              } catch (error) {
+                toast.error("Failed to delete user.");
+              }
+        
+        }
+      });
+   
   }
 
   return (

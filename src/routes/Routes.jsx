@@ -83,11 +83,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "myTask",
-        element: (
-          <BuyerRoute>
-            <MyTask></MyTask>
-          </BuyerRoute>
-        ),
+        element: <MyTask></MyTask>,
       },
       {
         path: "purchaseCoin",

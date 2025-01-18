@@ -9,7 +9,7 @@ import useCoin from "../../../../hooks/useCoin";
 const WithdrawRequest = () => {
     const [, , refetch] = useCoin()
   const axiosSecure = useAxiosSecure();
-  const { data: withdraws, isLoading } = useQuery({
+  const { data: withdraws, isLoading, refetch:withdrawRefetch } = useQuery({
     queryKey: ["withdraw-request"],
     queryFn: async () => {
       const { data } = await axiosSecure("/withdraw");
@@ -29,9 +29,11 @@ const WithdrawRequest = () => {
       });
       if (data.modifiedCount) {
         refetch()
+        withdrawRefetch()
         toast.success("Withdrawal Request is approved");
       }
     } catch (error) {
+      console.log(error)
       toast.error(error.response.data.message);
     }
   };
