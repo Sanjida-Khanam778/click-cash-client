@@ -1,16 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import SharedTitle from "../../../../components/Shared/SharedTitle";
+import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import SubmissionModal from "../../../../components/Modal/SubmissionModal";
 
 const TaskReview = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  let [isOpen, setIsOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({});
+  // update modal state
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const { data: submissions = [] } = useQuery({
+    queryKey: ["buyer-submissions"],
+    queryFn: async () => {
+      const response = await axiosSecure(
+        `/allSubmissions/buyer/${user?.email}`
+      );
+      return response.data;
+    },
+  });
+  const handleSubmission = async (submission) => {
+    setSelectedTask(submission);
+    setIsEditModalOpen(true);
+  };
+  console.log(submissions);
   return (
     <div>
-                <SharedTitle title={'Buyer states'} subtitle={'look at the stats'}></SharedTitle>
+      <SharedTitle
+        title={"Task Review"}
+        subtitle={"look at the stats"}
+      ></SharedTitle>
 
       <div className="overflow-x-auto w-10/12 mx-auto border border-[#A35C7A] mb-10 lg:mb-20">
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="text-lg">
+            <tr className="text-lg text-center">
               <th>#</th>
               <th>worker_name </th>
               <th>task_title</th>
@@ -20,44 +55,32 @@ const TaskReview = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {tasks.map((task, idx) => (
-              <tr key={task._id}>
-                <th>{idx + 1}</th>
-                <td>{task.title}</td>
-                <td>{task.details.substring(0, 15)}...</td>
-                <td>{task.submissionInfo.substring(0, 20)}...</td>
-                <td>{task.date}</td>
-                <td className="text-3xl space-x-5">
-                  <button>
-                    <MdOutlineBrowserUpdated />
-                  </button>
-                 
+            {submissions.map((submission, idx) => (
+              <tr key={submission?._id} className="text-center">
+                <td>{idx + 1}</td>
+                <th>{submission.worker.workerName}</th>
+                <td>{submission.title}</td>
+                <td>$ {submission.amount}</td>
+                <td>
                   <button
-                    onClick={() => {
-                      setSelectedTask(task);
-                      setIsOpen(true);
-                    }}
+                    onClick={() => handleSubmission(submission)}
+                    className="btn btn-outline"
                   >
-                    <MdDelete />
+                    View Submission
                   </button>
-                 
+                  <SubmissionModal
+                    submission={selectedTask}
+                    isOpen={isEditModalOpen}
+                    setIsEditModalOpen={setIsEditModalOpen}
+                  ></SubmissionModal>
+                </td>
+                <td className="flex gap-2">
+                  <button className="btn">Approve</button>
+
+                  <button className="btn">Reject</button>
                 </td>
               </tr>
-            ))} */}
-            <tr>
-              <th>1</th>
-              <td>name</td>
-              <td>title</td>
-              <td>amount</td>
-              <td>
-                <button className="btn btn-outline">View Submission</button>
-              </td>
-              <td className="flex gap-2">
-                <button className="btn">Approve</button>
-
-                <button className="btn">Reject</button>
-              </td>
-            </tr>
+            ))}
           </tbody>
         </table>
       </div>

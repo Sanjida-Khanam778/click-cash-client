@@ -8,8 +8,14 @@ import {
 import { Fragment } from "react";
 
 import UpdateForm from "../UpdateForm";
+import SubmissionForm from "../SubmissionForm";
 
-const UpdateModal = ({ setIsEditModalOpen, isOpen, task, refetch }) => {
+const SubmissionModal = ({
+  setIsEditModalOpen,
+  isOpen,
+  submission,
+  refetch,
+}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -45,18 +51,16 @@ const UpdateModal = ({ setIsEditModalOpen, isOpen, task, refetch }) => {
                   as="h3"
                   className="text-lg font-medium text-center leading-6 text-gray-900"
                 >
-                  Update Task Info
+                  Submission Details
                 </DialogTitle>
                 <div className="mt-2 w-full">
-                  {task && (
-                    <UpdateForm
-                      refetch={refetch}
-                      task={task}
+                  {submission && (
+                    <SubmissionForm
+                      submission={submission}
                       setIsEditModalOpen={setIsEditModalOpen}
-                    ></UpdateForm>
+                    ></SubmissionForm>
                   )}
                 </div>
-               
               </DialogPanel>
             </TransitionChild>
           </div>
@@ -66,4 +70,4 @@ const UpdateModal = ({ setIsEditModalOpen, isOpen, task, refetch }) => {
   );
 };
 
-export default UpdateModal;
+export default SubmissionModal;

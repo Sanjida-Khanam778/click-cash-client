@@ -9,7 +9,7 @@ const ApprovedSubmission = () => {
     const axiosSecure = useAxiosSecure()
     const {data: submissions=[]} = useQuery({
         queryKey:['approved-submission'],
-        queryFn: async(req, res)=>{
+        queryFn: async()=>{
             const response = await axiosSecure(`/mySubmission/${user?.email}?approved=${true}`)
             return response.data
         }
