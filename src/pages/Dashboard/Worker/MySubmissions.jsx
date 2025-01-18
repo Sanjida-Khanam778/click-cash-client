@@ -62,7 +62,7 @@ const MySubmissions = () => {
                 </td>
                 <td className="text-center">$ {item.amount}</td>
                 <td
-                  className={`${item.status === "Pending" && "text-red-500"} ${item.status === "Approved" && "text-green-500"} font-bold text-center`}
+                  className={`${item.status === "Pending" && "text-red-500"} ${item.status === "Approved" && "text-green-500"} font-medium text-center`}
                 >
                   {item.status}
                 </td>
