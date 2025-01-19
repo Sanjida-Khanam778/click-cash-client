@@ -6,11 +6,10 @@ import SharedTitle from "../../../components/Shared/SharedTitle";
 import {
   FaUser,
   FaCalendarAlt,
-  FaMoneyBillWave,
   FaUsers,
   FaDollarSign,
 } from "react-icons/fa";
-import { MdOutlineSubtitles, MdDescription } from "react-icons/md";
+import { MdDescription } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 

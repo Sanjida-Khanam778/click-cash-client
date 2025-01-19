@@ -1,7 +1,21 @@
 import React from "react";
 import SharedTitle from "../../../../components/Shared/SharedTitle";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+// import useAuth from "../../../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const AdminStates = () => {
+  const axiosSecure = useAxiosSecure();
+  // const { user } = useAuth();
+  const { data: states = {} } = useQuery({
+    queryKey: ["buyer-stat"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/admin-stats`);
+      return data;
+    },
+  });
+  const { totalWorkers, totalBuyers, totalAvailableCoins, totalPayments } = states;
+  console.log(states);
   return (
     <div className="flex flex-col justify-center items-center my-10 lg:my-20 w-11/12 mx-auto">
       <SharedTitle title={"Admin States"}></SharedTitle>
@@ -23,7 +37,7 @@ const AdminStates = () => {
             </svg>
           </div>
           <div className="stat-title">Total Workers</div>
-          <div className="stat-value">31K</div>
+          <div className="stat-value">{totalWorkers}</div>
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
@@ -44,7 +58,7 @@ const AdminStates = () => {
             </svg>
           </div>
           <div className="stat-title">Total Buyers</div>
-          <div className="stat-value">4,200</div>
+          <div className="stat-value">{totalBuyers}</div>
           <div className="stat-desc">↗︎ 400 (22%)</div>
         </div>
 
@@ -64,8 +78,8 @@ const AdminStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Total Available</div>
-          <div className="stat-value">1,200</div>
+          <div className="stat-title">Total Available Coins</div>
+          <div className="stat-value">{totalAvailableCoins}</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
 
@@ -86,7 +100,7 @@ const AdminStates = () => {
             </svg>
           </div>
           <div className="stat-title">Total Payments</div>
-          <div className="stat-value">1,200</div>
+          <div className="stat-value">{totalPayments}</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
       </div>
