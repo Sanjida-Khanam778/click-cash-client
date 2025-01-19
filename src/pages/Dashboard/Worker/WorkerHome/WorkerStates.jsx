@@ -1,9 +1,23 @@
 import React from "react";
 import SharedTitle from "../../../../components/Shared/SharedTitle";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useAuth from "../../../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const WorkerStates = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const { data: states = {} } = useQuery({
+    queryKey: ["worker-stat"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/worker-stats/${user?.email}`);
+      return data;
+    },
+  });
+  const { totalSubmissionCount, totalPendingSubmissionCount, totalEarning } = states;
+  console.log(states);
   return (
-    <div className="flex flex-col justify-center items-center my-10 lg:my-32 px-4">
+    <div className="flex flex-col justify-center items-center w-10/12 mx-auto my-10 lg:my-32 px-4">
       <SharedTitle title={"Worker States"}></SharedTitle>
       <div className="stats stats-vertical lg:stats-horizontal shadow w-full max-w-4xl">
         {/* Downloads Stat */}
@@ -23,8 +37,8 @@ const WorkerStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Downloads</div>
-          <div className="stat-value">31K</div>
+          <div className="stat-title">Total Submission</div>
+          <div className="stat-value">{totalSubmissionCount}</div>
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
@@ -45,8 +59,8 @@ const WorkerStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Users</div>
-          <div className="stat-value">4,200</div>
+          <div className="stat-title">Total Pending Submission</div>
+          <div className="stat-value">{totalPendingSubmissionCount}</div>
           <div className="stat-desc">↗︎ 400 (22%)</div>
         </div>
 
@@ -67,8 +81,8 @@ const WorkerStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Registers</div>
-          <div className="stat-value">1,200</div>
+          <div className="stat-title">Total Earning</div>
+          <div className="stat-value">{totalEarning}</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
       </div>

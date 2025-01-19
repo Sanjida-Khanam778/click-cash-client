@@ -57,7 +57,7 @@ const TaskDetails = () => {
         workerEmail: user?.email,
         workerName: user?.displayName,
       },
-      amount,
+      amount: parseInt(amount),
       buyer: {
         buyerName,
         buyerEmail: buyer,

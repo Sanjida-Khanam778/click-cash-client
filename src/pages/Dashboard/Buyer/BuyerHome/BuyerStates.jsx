@@ -5,20 +5,23 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 
 const BuyerStates = () => {
-  const axiosSecure = useAxiosSecure()
-  const {user} = useAuth()
-  const {data: states={}} = useQuery({
-    queryKey: ['buyer-stat'],
-    queryFn: async()=>{
-      const {data} = await axiosSecure(`/buyer-stats/${user?.email}`)
-      return data
-    }
-  })
-  const{totalTaskCount, pendingTaskCount, totalPayments}=states
-  console.log(states)
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const { data: states = {} } = useQuery({
+    queryKey: ["buyer-stat"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/buyer-stats/${user?.email}`);
+      return data;
+    },
+  });
+  const { totalTaskCount, pendingTaskCount, totalPayments } = states;
+  console.log(states);
   return (
     <div className="flex flex-col justify-center items-center my-10 lg:my-20">
-      <SharedTitle title={"Buyer States"} subtitle={"Look at the stats"}></SharedTitle>
+      <SharedTitle
+        title={"Buyer States"}
+        subtitle={"Look at the stats"}
+      ></SharedTitle>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 w-full px-4 lg:px-20">
         <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">

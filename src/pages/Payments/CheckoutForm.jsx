@@ -91,7 +91,7 @@ const CheckoutForm = ({price}) => {
 
   return (
    
-      <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+      <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {
@@ -109,7 +109,7 @@ const CheckoutForm = ({price}) => {
           }}
         />
         <button
-          className="btn btn-sm btn-success text-white my-3 md:my-8 border-2"
+          className="btn btn-sm btn-primary text-white my-3 md:my-8 border-2"
           type="submit"
           disabled={!stripe || !clientSecret}
         >
