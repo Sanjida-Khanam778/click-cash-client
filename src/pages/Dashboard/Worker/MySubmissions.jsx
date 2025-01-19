@@ -9,7 +9,7 @@ const MySubmissions = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
-  const submissionsPerPage = 5; // Number of submissions per page
+  const submissionsPerPage = 5; 
 
   const { data: submission = [], isLoading } = useQuery({
     queryKey: ["my-submission", user?.email],
@@ -21,7 +21,6 @@ const MySubmissions = () => {
 
   if (isLoading) return <p className="text-center text-lg">Loading...</p>;
 
-  // Calculate pagination details
   const indexOfLastSubmission = currentPage * submissionsPerPage;
   const indexOfFirstSubmission = indexOfLastSubmission - submissionsPerPage;
   const currentSubmissions = submission.slice(
@@ -30,7 +29,6 @@ const MySubmissions = () => {
   );
   const totalPages = Math.ceil(submission.length / submissionsPerPage);
 
-  // Handle page change
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -87,7 +85,6 @@ const MySubmissions = () => {
           </tbody>
         </table>
       </div>
-      {/* Pagination */}
       <div className="flex justify-center mt-6">
         {[...Array(totalPages)].map((_, pageIndex) => (
           <button

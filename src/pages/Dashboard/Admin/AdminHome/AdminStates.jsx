@@ -3,10 +3,10 @@ import SharedTitle from "../../../../components/Shared/SharedTitle";
 
 const AdminStates = () => {
   return (
-    <div className="flex flex-col justify-center items-center my-10 lg:my-20">
-      <SharedTitle title={"admin States"}></SharedTitle>
-      <div className="stats shadow">
-        <div className="stat">
+    <div className="flex flex-col justify-center items-center my-10 lg:my-20 w-11/12 mx-auto">
+      <SharedTitle title={"Admin States"}></SharedTitle>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 w-full px-4 ">
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -22,12 +22,12 @@ const AdminStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Total Worker</div>
+          <div className="stat-title">Total Workers</div>
           <div className="stat-value">31K</div>
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
-        <div className="stat">
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +43,12 @@ const AdminStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Total Buyer</div>
+          <div className="stat-title">Total Buyers</div>
           <div className="stat-value">4,200</div>
           <div className="stat-desc">↗︎ 400 (22%)</div>
         </div>
 
-        <div className="stat">
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,11 +64,12 @@ const AdminStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">total available coin</div>
+          <div className="stat-title">Total Available</div>
           <div className="stat-value">1,200</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
-        <div className="stat">
+
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +85,7 @@ const AdminStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">total payments</div>
+          <div className="stat-title">Total Payments</div>
           <div className="stat-value">1,200</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>

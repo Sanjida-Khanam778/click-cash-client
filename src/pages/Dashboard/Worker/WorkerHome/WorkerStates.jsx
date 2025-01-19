@@ -3,9 +3,10 @@ import SharedTitle from "../../../../components/Shared/SharedTitle";
 
 const WorkerStates = () => {
   return (
-    <div className="flex flex-col justify-center items-center my-10 lg:my-20">
-      <SharedTitle title={"WorkerStates"}></SharedTitle>
-      <div className="stats shadow">
+    <div className="flex flex-col justify-center items-center my-10 lg:my-32 px-4">
+      <SharedTitle title={"Worker States"}></SharedTitle>
+      <div className="stats stats-vertical lg:stats-horizontal shadow w-full max-w-4xl">
+        {/* Downloads Stat */}
         <div className="stat">
           <div className="stat-figure text-secondary">
             <svg
@@ -27,6 +28,7 @@ const WorkerStates = () => {
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
+        {/* New Users Stat */}
         <div className="stat">
           <div className="stat-figure text-secondary">
             <svg
@@ -48,6 +50,7 @@ const WorkerStates = () => {
           <div className="stat-desc">↗︎ 400 (22%)</div>
         </div>
 
+        {/* New Registers Stat */}
         <div className="stat">
           <div className="stat-figure text-secondary">
             <svg

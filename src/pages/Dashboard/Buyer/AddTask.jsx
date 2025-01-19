@@ -63,7 +63,7 @@ const AddTask = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="card-body bg-[#FBF5E5] w-10/12 xl:w-1/2 mx-auto"
       >
-        <div className="flex gap-2">
+        <div className="flex-col md:flex-row gap-2">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Task Title</span>
@@ -89,7 +89,7 @@ const AddTask = () => {
             />
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex-col md:flex-row gap-2">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Required Workers</span>
@@ -115,7 +115,7 @@ const AddTask = () => {
             />
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex-col md:flex-row gap-2">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Completion Date</span>

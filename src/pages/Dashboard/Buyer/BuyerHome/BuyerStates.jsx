@@ -1,12 +1,26 @@
 import React from "react";
 import SharedTitle from "../../../../components/Shared/SharedTitle";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useAuth from "../../../../hooks/useAuth";
 
 const BuyerStates = () => {
+  const axiosSecure = useAxiosSecure()
+  const {user} = useAuth()
+  const {data: states={}} = useQuery({
+    queryKey: ['buyer-stat'],
+    queryFn: async()=>{
+      const {data} = await axiosSecure(`/buyer-stats/${user?.email}`)
+      return data
+    }
+  })
+  const{totalTaskCount, pendingTaskCount, totalPayments}=states
+  console.log(states)
   return (
     <div className="flex flex-col justify-center items-center my-10 lg:my-20">
-        <SharedTitle title={'Buyer states'} subtitle={'look at the stats'}></SharedTitle>
-      <div className="stats shadow">
-        <div className="stat">
+      <SharedTitle title={"Buyer States"} subtitle={"Look at the stats"}></SharedTitle>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 w-full px-4 lg:px-20">
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -22,12 +36,12 @@ const BuyerStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Downloads</div>
-          <div className="stat-value">31K</div>
-          <div className="stat-desc">Jan 1st - Feb 1st</div>
+          <div className="stat-title">Total Task</div>
+          <div className="stat-value">{totalTaskCount}</div>
+          {/* <div className="stat-desc">Jan 1st - Feb 1st</div> */}
         </div>
 
-        <div className="stat">
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +57,12 @@ const BuyerStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Users</div>
-          <div className="stat-value">4,200</div>
-          <div className="stat-desc">↗︎ 400 (22%)</div>
+          <div className="stat-title">Pending Task</div>
+          <div className="stat-value">{pendingTaskCount}</div>
+          {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
         </div>
 
-        <div className="stat">
+        <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,9 +78,9 @@ const BuyerStates = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Registers</div>
-          <div className="stat-value">1,200</div>
-          <div className="stat-desc">↘︎ 90 (14%)</div>
+          <div className="stat-title">Total Payment</div>
+          <div className="stat-value">{totalPayments}</div>
+          {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
         </div>
       </div>
     </div>

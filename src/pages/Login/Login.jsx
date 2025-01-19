@@ -4,8 +4,13 @@ import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { saveUser } from "../../utilities/utils";
 import { CgSpinnerAlt } from "react-icons/cg";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+
   const { signIn, setUser, signInWithGoogle, loading, setLoading, user } =
     useAuth();
   const navigate = useNavigate();
@@ -24,7 +29,19 @@ const Login = () => {
       //User Login
       const res = await signIn(email, password);
       setUser(res?.user);
-      navigate(from, { replace: true });
+      console.log(res?.user?.email);
+
+      const { data } = await axiosPublic(`/users/${res?.user?.email}`);
+      console.log(data.role);
+      if (data.role === "Buyer") {
+        navigate("/dashboard/buyerHome");
+      }
+      if (data.role === "Admin") {
+        navigate("/dashboard/adminHome");
+      }
+      if (data.role === "Worker") {
+        navigate("/dashboard/workerHome");
+      }
       toast.success("Login Successful");
     } catch (err) {
       console.log(err);
@@ -40,7 +57,18 @@ const Login = () => {
       const data = await signInWithGoogle();
       // save user info in db if the user is new
       await saveUser({ ...data?.user, coin: 0 });
-      navigate(from, { replace: true });
+      const { data:role } = await axiosPublic(`/users/${data?.user?.email}`);
+      console.log(role.role);
+      if (role.role === "Buyer") {
+        navigate("/dashboard/buyerHome");
+      }
+      if (role.role === "Admin") {
+        navigate("/dashboard/adminHome");
+      }
+      if (role.role === "Worker") {
+        navigate("/dashboard/workerHome");
+      }
+      // navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
       console.log(err);

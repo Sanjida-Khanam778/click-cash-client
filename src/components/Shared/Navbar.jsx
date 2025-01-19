@@ -6,6 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { TbCoinFilled } from "react-icons/tb";
 import useCoin from "../../hooks/useCoin";
 import { CgSpinnerAlt } from "react-icons/cg";
+import { BiLogOutCircle } from "react-icons/bi";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -55,7 +56,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <img className="h-5 md:h-9 mr-2 md:mr-4" src={logo} alt="" />
+          <img className="h-5 md:h-9 mr-2 md:mr-4 hidden md:block" src={logo} alt="" />
           <Link
             to={"/"}
             className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont"
@@ -92,7 +93,7 @@ const Navbar = () => {
                 </div>
                 <Link onClick={logOut}>
                   <button className="btn text-white bg-[#A35C7A] border-none">
-                    Logout
+                    <span className="hidden md:block">Logout</span><span className="md:hidden text-xl"><BiLogOutCircle></BiLogOutCircle></span>
                   </button>
                 </Link>
               </>
