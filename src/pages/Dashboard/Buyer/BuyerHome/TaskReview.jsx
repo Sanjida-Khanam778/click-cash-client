@@ -5,8 +5,10 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import SubmissionModal from "../../../../components/Modal/SubmissionModal";
 import toast from "react-hot-toast";
+import useCoin from "../../../../hooks/useCoin";
 
 const TaskReview = () => {
+  const [, , refetch]=useCoin()
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   let [isOpen, setIsOpen] = useState(false);
@@ -21,7 +23,7 @@ const TaskReview = () => {
     setIsOpen(false);
   }
 
-  const { data: submissions = [], refetch } = useQuery({
+  const { data: submissions = [], refetch:submissionRefetch } = useQuery({
     queryKey: ["buyer-submissions"],
     queryFn: async () => {
       const response = await axiosSecure(
@@ -48,7 +50,7 @@ const TaskReview = () => {
       );
       if (data.modifiedCount) {
         refetch();
-        // withdrawRefetch()
+        submissionRefetch()
         toast.success("Task is approved");
       }
     } catch (error) {
@@ -65,7 +67,7 @@ const TaskReview = () => {
       );
       if (data.modifiedCount) {
         refetch();
-        // withdrawRefetch()
+        submissionRefetch()
         toast.success("Task is rejected");
       }
     } catch (error) {

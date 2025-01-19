@@ -10,7 +10,7 @@ const Payment = () => {
   const [searchParams] = useSearchParams();
   const price = searchParams.get("amount") || 0;
   return (
-    <div>
+    <div className="my-10 lg:my-20">
       <SharedTitle
         title={"PAYMENT"}
         subtitle={"Please pay to eat"}
