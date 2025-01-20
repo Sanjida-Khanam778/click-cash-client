@@ -41,6 +41,11 @@ const SignUp = () => {
       setError("Password must contain at least one uppercase letter");
       return;
     }
+    if (!/[0-9]/.test(password)) {
+      setError("Password must contain at least one digit");
+      return;
+    }
+    
     console.log(role, coin);
     try {
       //2. User Registration

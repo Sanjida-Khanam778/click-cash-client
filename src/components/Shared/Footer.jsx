@@ -78,7 +78,7 @@ const Footer = () => {
               <p
                 className={`text-start md:text-center text-black mb-2 lg:mb-0 font-bold text-opacity-70 `}
               >
-                Location: Dhaka, Bangladesh <br />
+                Location: 123 Main Street, Dhaka, Bangladesh <br />
                 Phone: +880 1684796286 <br />
                 Email: clickcashbd@gmail.com <br />
               </p>

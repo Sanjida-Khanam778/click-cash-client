@@ -120,7 +120,7 @@ const Navbar = () => {
               }
               className="btn btn-outline ml-3"
             >
-              Join as Developer
+              Join <span className="hidden md:flex">as Developer</span>
             </button>
           </div>
         </div>

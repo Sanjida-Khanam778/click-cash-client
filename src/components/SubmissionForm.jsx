@@ -24,12 +24,7 @@ const SubmissionForm = ({ setIsEditModalOpen, submission }) => {
         </div>
        
       </div>
-      {/* <button
-        className="mt-6 px-4 py-2 bg-[#A35C7A] rounded-lg text-white"
-        onClick={handleSubmit}
-      >
-        Close
-      </button> */}
+     
     </div>
   );
 };

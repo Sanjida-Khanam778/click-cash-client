@@ -5,10 +5,13 @@ import {
   FaHome,
   FaList,
   FaShoppingCart,
+  FaTasks,
   FaUsers,
-  FaUtensils,
+ 
 } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
+import { IoBagAdd } from "react-icons/io5";
+
 import { FaClover } from "react-icons/fa6";
 import { TbCoinFilled } from "react-icons/tb";
 import { Link, NavLink, Outlet, ScrollRestoration } from "react-router-dom";
@@ -19,6 +22,7 @@ import useCoin from "../hooks/useCoin";
 import useRole from "../hooks/useRole";
 import Footer from "../components/Shared/Footer";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { MdAddCircle, MdPayment } from "react-icons/md";
 
 
 const DashboardLayout = () => {
@@ -39,13 +43,13 @@ const DashboardLayout = () => {
       </li>
       <li>
         <NavLink to={"/dashboard/taskList"}>
-          <FaUtensils />
+          <FaList />
           TaskList
         </NavLink>
       </li>
       <li>
         <NavLink to={"/dashboard/mySubmissions"}>
-          <FaList />
+          <IoBagAdd />
           My Submissions
         </NavLink>
       </li>
@@ -57,13 +61,13 @@ const DashboardLayout = () => {
       </li>
       <li>
         <NavLink to={"/dashboard/buyerHome"}>
-          <FaUsers />
+          <FaHome />
           Home
         </NavLink>
       </li>
       <li>
         <NavLink to={"/dashboard/addTask"}>
-          <FaHome />
+          <MdAddCircle />
           Add new Tasks
         </NavLink>
       </li>
@@ -81,25 +85,25 @@ const DashboardLayout = () => {
       </li>
       <li>
         <NavLink to={"/dashboard/paymentHistory"}>
-          <FaShoppingCart />
+          <MdPayment />
           Payment History
         </NavLink>
       </li>
       <li>
         <NavLink to={"/dashboard/adminHome"}>
-          <FaAd />
+          <FaHome />
           Home
         </NavLink>
       </li>
       <li>
         <NavLink to={"/dashboard/manageUsers"}>
-          <FaList />
+          <FaUsers />
           Manage Users
         </NavLink>
       </li>
       <li>
         <NavLink to={"/dashboard/manageTask"}>
-          <FaHome />
+          <FaTasks />
           Manage Task
         </NavLink>
       </li>

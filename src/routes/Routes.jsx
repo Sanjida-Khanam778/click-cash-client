@@ -16,12 +16,14 @@ import MyTask from "../pages/Dashboard/Buyer/MyTask";
 import AddTask from "../pages/Dashboard/Buyer/AddTask";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
-import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../pages/Payments/Payment";
 import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome";
 import TaskDetails from "../pages/Dashboard/Worker/TaskDetails";
 import WorkerHome from "../pages/Dashboard/Worker/WorkerHome/WorkerHome";
+import BuyerRoute from "./WorkerRoute";
+import AdminRoute from "./AdminRoute";
+import WorkerRoute from "./WorkerRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -51,59 +53,59 @@ export const router = createBrowserRouter([
       },
       {
         path: "workerHome",
-        element: <WorkerHome></WorkerHome>,
+        element: <WorkerRoute><WorkerHome></WorkerHome></WorkerRoute>,
       },
       {
         path: "buyerHome",
-        element: <BuyerHome></BuyerHome>,
+        element: <BuyerRoute><BuyerHome></BuyerHome></BuyerRoute>,
       },
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>,
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>,
       },
       {
         path: "mySubmissions",
-        element: <MySubmissions></MySubmissions>,
+        element: <WorkerRoute><MySubmissions></MySubmissions></WorkerRoute>,
       },
       {
         path: "taskList",
-        element: <TaskList></TaskList>,
+        element: <WorkerRoute><TaskList></TaskList></WorkerRoute>,
       },
       {
         path: "taskDetails/:id",
-        element: <TaskDetails></TaskDetails>,
+        element: <WorkerRoute><TaskDetails></TaskDetails></WorkerRoute>,
       },
       {
         path: "withdrawals",
-        element: <Withdrawals></Withdrawals>,
+        element: <WorkerRoute><Withdrawals></Withdrawals></WorkerRoute>,
       },
       {
         path: "addTask",
-        element: <AddTask></AddTask>,
+        element: <BuyerRoute><AddTask></AddTask></BuyerRoute>,
       },
       {
         path: "myTask",
-        element: <MyTask></MyTask>,
+        element: <BuyerRoute><MyTask></MyTask></BuyerRoute>,
       },
       {
         path: "purchaseCoin",
-        element: <PurchaseCoin></PurchaseCoin>,
+        element: <BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute>,
       },
       {
         path: "payment",
-        element: <Payment></Payment>,
+        element: <BuyerRoute><Payment></Payment></BuyerRoute>,
       },
       {
         path: "paymentHistory",
-        element: <PaymentHistory></PaymentHistory>,
+        element: <BuyerRoute><PaymentHistory></PaymentHistory></BuyerRoute>,
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
       },
       {
         path: "manageTask",
-        element: <ManageTask></ManageTask>,
+        element: <AdminRoute><ManageTask></ManageTask></AdminRoute>,
       },
     ],
   },

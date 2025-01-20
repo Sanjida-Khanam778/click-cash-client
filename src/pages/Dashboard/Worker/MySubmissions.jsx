@@ -85,7 +85,7 @@ const MySubmissions = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-center mt-6">
+      <div className="flex justify-center flex-wrap mt-6">
         {[...Array(totalPages)].map((_, pageIndex) => (
           <button
             key={pageIndex}

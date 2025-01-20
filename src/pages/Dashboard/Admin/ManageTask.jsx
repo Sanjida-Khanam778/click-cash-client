@@ -21,7 +21,7 @@ const ManageTask = () => {
   const { data: tasks = [], isLoading, refetch } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/tasks");
+      const res = await axiosSecure.get("/tasks-manage");
       return res.data;
     },
   });
