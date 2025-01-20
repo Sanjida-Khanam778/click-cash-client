@@ -19,7 +19,7 @@ const AdminStates = () => {
   return (
     <div className="flex flex-col justify-center items-center my-10 lg:my-20 w-11/12 mx-auto">
       <SharedTitle title={"Admin States"}></SharedTitle>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 w-full px-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8 w-full px-4 ">
         <div className="stat shadow-lg rounded-lg bg-white p-6">
           <div className="stat-figure text-secondary">
             <svg

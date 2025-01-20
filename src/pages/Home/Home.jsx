@@ -4,6 +4,7 @@ import Banner from './Banner';
 import Feedback from './Feedback';
 import BestWorkers from './BestWorkers';
 import Aos from 'aos';
+import FAQ from './FAQ';
 
 const Home = () => {
     useEffect(() => {
@@ -22,6 +23,7 @@ const Home = () => {
             <Banner></Banner>
             <BestWorkers></BestWorkers>
             <Feedback></Feedback>
+            <FAQ></FAQ>
         </div>
     );
 };

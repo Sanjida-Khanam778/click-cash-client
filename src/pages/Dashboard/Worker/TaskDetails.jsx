@@ -73,10 +73,19 @@ const TaskDetails = () => {
     console.log(submissionData);
     try{
       const { data } = await axiosSecure.post("/submission", submissionData);
-
+      const notificationData = {
+        message: `${user?.displayName} submitted your task: ${title}`,
+        ToEmail: buyer,
+        actionRoute: "/dashboard/worker-home",
+        Time: new Date(),
+      };
     if (data.insertedId) {
       toast.success("Submission Successful");
       refetch();
+      await axiosSecure.post(
+        "/notifications",
+        notificationData
+      );
     }
     }catch(error){
       toast.error(error.response.data.message)

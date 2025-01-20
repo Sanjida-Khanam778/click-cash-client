@@ -27,10 +27,21 @@ const WithdrawRequest = () => {
       const { data } = await axiosSecure.patch(`/withdraw/${withdraw?._id}`, {
         approvalData,
       });
+      const notificationData = {
+        message: `you have successfully withdraw $${withdraw.amount} for ${withdraw.withdrawCoin} coin`,
+        ToEmail: withdraw?.worker?.workerEmail,
+        actionRoute: "/dashboard/worker-home",
+        Time: new Date(),
+      };
       if (data.modifiedCount) {
         refetch()
         withdrawRefetch()
         toast.success("Withdrawal Request is approved");
+        // notification
+        await axiosSecure.post(
+          "/notifications",
+          notificationData
+        );
       }
     } catch (error) {
       console.log(error)

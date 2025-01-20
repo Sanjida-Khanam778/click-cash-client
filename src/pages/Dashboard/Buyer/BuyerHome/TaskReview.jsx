@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import useCoin from "../../../../hooks/useCoin";
 
 const TaskReview = () => {
-  const [, , refetch]=useCoin()
+  const [, , refetch] = useCoin();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   let [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ const TaskReview = () => {
     setIsOpen(false);
   }
 
-  const { data: submissions = [], refetch:submissionRefetch } = useQuery({
+  const { data: submissions = [], refetch: submissionRefetch } = useQuery({
     queryKey: ["buyer-submissions"],
     queryFn: async () => {
       const response = await axiosSecure(
@@ -40,7 +40,7 @@ const TaskReview = () => {
   const handleApproval = async (submission) => {
     const amount = parseInt(submission.amount);
     // console.log(submission.amount)
-
+    const workerEmail = submission?.worker?.workerEmail;
     try {
       const { data } = await axiosSecure.patch(
         `/submission/${submission?._id}`,
@@ -48,10 +48,61 @@ const TaskReview = () => {
           amount,
         }
       );
+      const notificationData = {
+        message: `you have earned ${submission?.amount} from ${submission?.buyer?.buyerName} for completing ${submission?.title}`,
+        ToEmail: workerEmail,
+        actionRoute: "/dashboard/worker-home",
+        Time: new Date(),
+      };
       if (data.modifiedCount) {
         refetch();
-        submissionRefetch()
-        toast.success("Task is approved");
+        submissionRefetch();
+        toast.success("Task is approved.");
+
+        // const {data: notification={}} = useQuery({
+        //   queryKey: ['notification'],
+        //   queryFn: async()=>{
+        //     const { data } = await axiosSecure.post(
+        //       "/notifications",
+        //       notificationData
+        //     );
+        //     return data
+        //   }
+        // })
+
+        const { data: notification } = await axiosSecure.post(
+          "/notifications",
+          notificationData
+        );
+
+        console.log(notification);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
+
+  const handleReject = async (submission) => {
+    // console.log(id);
+    try {
+      const { data } = await axiosSecure.patch(
+        `/submission/${submission._id}?reject=${true}`
+      );
+      if (data.modifiedCount) {
+        const notificationData = {
+          message: `Your Task ${submission.title} is rejected by ${submission?.buyer?.buyerName}`,
+          ToEmail: submission?.worker?.workerEmail,
+          actionRoute: "/dashboard/worker-home",
+          Time: new Date(),
+        };
+        refetch();
+        submissionRefetch();
+        toast.success("Task is rejected");
+        await axiosSecure.post(
+          "/notifications",
+          notificationData
+        );
       }
     } catch (error) {
       console.log(error);
@@ -59,23 +110,6 @@ const TaskReview = () => {
     }
   };
 
-  const handleReject = async (id) => {
-    console.log(id);
-    try {
-      const { data } = await axiosSecure.patch(
-        `/submission/${id}?reject=${true}`
-      );
-      if (data.modifiedCount) {
-        refetch();
-        submissionRefetch()
-        toast.success("Task is rejected");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
-    }
-  };
-  
   return (
     <div>
       <SharedTitle
@@ -125,7 +159,7 @@ const TaskReview = () => {
                   </button>
 
                   <button
-                    onClick={() => handleReject(submission._id)}
+                    onClick={() => handleReject(submission)}
                     className="btn"
                   >
                     Reject

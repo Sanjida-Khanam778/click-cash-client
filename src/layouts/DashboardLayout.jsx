@@ -9,7 +9,7 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
-
+import { FaClover } from "react-icons/fa6";
 import { TbCoinFilled } from "react-icons/tb";
 import { Link, NavLink, Outlet, ScrollRestoration } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -18,8 +18,12 @@ import useAuth from "../hooks/useAuth";
 import useCoin from "../hooks/useCoin";
 import useRole from "../hooks/useRole";
 import Footer from "../components/Shared/Footer";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 
 const DashboardLayout = () => {
+  const axiosSecure = useAxiosSecure();
+  const [notifications, setNotifications] = useState([]);
   const { user } = useAuth();
   const [coin] = useCoin();
   const [role] = useRole();
@@ -102,6 +106,13 @@ const DashboardLayout = () => {
     </>
   );
 
+  const handleNotification = async () => {
+    console.log(user?.email);
+    const {data}  = await axiosSecure(`/notifications/${user?.email}`);
+    console.log(data);
+    setNotifications(data);
+  };
+
   return (
     <div>
       <ScrollRestoration />
@@ -149,12 +160,29 @@ const DashboardLayout = () => {
                 </p>
               </div>
             </div>
-            <div className="indicator">
-              <span className="indicator-item badge badge-outline h-5 w-3 md:w-0 md:h-7 text-xs border-2 font-bold mt-1">
-                3
-              </span>
-              <div className=" w-7">
-                <IoMdNotifications className="text-xl lg:text-4xl"></IoMdNotifications>
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <div tabIndex={0} role="button" className=" m-1">
+                <div className="indicator" onClick={handleNotification}>
+                  {/* <span className="indicator-item badge badge-outline h-5 w-3 md:w-0 md:h-7 text-xs border-2 font-bold mt-1">
+                    {notifications.length}
+                  </span> */}
+
+                  <div className=" w-7">
+                    <IoMdNotifications className="text-xl lg:text-4xl"></IoMdNotifications>
+                  </div>
+                </div>
+              </div>
+              <div
+                tabIndex={0}
+                className="dropdown-content card card-compact bg-white z-[1] w-64 overflow-y-auto h-80 md:h-auto lg:w-96 p-2 shadow border"
+              >
+                <h3 className="card-title p-3">Notifications</h3>
+                <div className="card-body">
+                    {notifications.map((notification)=><div key={notification._id} className="flex gap-2">
+                    <FaClover className=""></FaClover>
+                      <p>{notification.message}</p></div>
+                    )}
+                </div>
               </div>
             </div>
           </div>
