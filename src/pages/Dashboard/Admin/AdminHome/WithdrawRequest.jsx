@@ -11,6 +11,7 @@ const WithdrawRequest = () => {
   const axiosSecure = useAxiosSecure();
   const { data: withdraws, isLoading, refetch:withdrawRefetch } = useQuery({
     queryKey: ["withdraw-request"],
+    enabled: !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosSecure("/withdraw");
       return data;
@@ -44,7 +45,6 @@ const WithdrawRequest = () => {
         );
       }
     } catch (error) {
-      console.log(error)
       toast.error(error.response.data.message);
     }
   };

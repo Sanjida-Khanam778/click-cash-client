@@ -7,7 +7,6 @@ import {
   FaShoppingCart,
   FaTasks,
   FaUsers,
- 
 } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 import { IoBagAdd } from "react-icons/io5";
@@ -24,7 +23,6 @@ import Footer from "../components/Shared/Footer";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { MdAddCircle, MdPayment } from "react-icons/md";
 
-
 const DashboardLayout = () => {
   const axiosSecure = useAxiosSecure();
   const [notifications, setNotifications] = useState([]);
@@ -35,85 +33,97 @@ const DashboardLayout = () => {
 
   const menuItems = (
     <>
-      <li>
-        <NavLink to={"/dashboard/workerHome"}>
-          <FaHome />
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/taskList"}>
-          <FaList />
-          TaskList
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/mySubmissions"}>
-          <IoBagAdd />
-          My Submissions
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/withdrawals"}>
-          <FaAd />
-          Withdrawals
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/buyerHome"}>
-          <FaHome />
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/addTask"}>
-          <MdAddCircle />
-          Add new Tasks
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/myTask"}>
-          <FaCalendar />
-          My Tasks
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/purchaseCoin"}>
-          <FaShoppingCart />
-          Purchase Coin
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/paymentHistory"}>
-          <MdPayment />
-          Payment History
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/adminHome"}>
-          <FaHome />
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/manageUsers"}>
-          <FaUsers />
-          Manage Users
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/dashboard/manageTask"}>
-          <FaTasks />
-          Manage Task
-        </NavLink>
-      </li>
+      {role === "Worker" && (
+        <>
+          <li>
+            <NavLink to={"/dashboard/workerHome"}>
+              <FaHome />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/taskList"}>
+              <FaList />
+              TaskList
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/mySubmissions"}>
+              <IoBagAdd />
+              My Submissions
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/withdrawals"}>
+              <FaAd />
+              Withdrawals
+            </NavLink>
+          </li>
+        </>
+      )}
+
+      {role === "Buyer" && (
+        <>
+          <li>
+            <NavLink to={"/dashboard/buyerHome"}>
+              <FaHome />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/addTask"}>
+              <MdAddCircle />
+              Add new Tasks
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/myTask"}>
+              <FaCalendar />
+              My Tasks
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/purchaseCoin"}>
+              <FaShoppingCart />
+              Purchase Coin
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/paymentHistory"}>
+              <MdPayment />
+              Payment History
+            </NavLink>
+          </li>
+        </>
+      )}
+      {role === "Admin" && (
+        <>
+      
+          <li>
+            <NavLink to={"/dashboard/adminHome"}>
+              <FaHome />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/manageUsers"}>
+              <FaUsers />
+              Manage Users
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/manageTask"}>
+              <FaTasks />
+              Manage Task
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
   const handleNotification = async () => {
-    console.log(user?.email);
-    const {data}  = await axiosSecure(`/notifications/${user?.email}`);
-    console.log(data);
+    const { data } = await axiosSecure(`/notifications/${user?.email}`);
     setNotifications(data);
   };
 
@@ -182,10 +192,12 @@ const DashboardLayout = () => {
               >
                 <h3 className="card-title p-3">Notifications</h3>
                 <div className="card-body">
-                    {notifications.map((notification)=><div key={notification._id} className="flex gap-2">
-                    <FaClover className=""></FaClover>
-                      <p>{notification.message}</p></div>
-                    )}
+                  {notifications.map((notification) => (
+                    <div key={notification._id} className="flex gap-2">
+                      <FaClover className=""></FaClover>
+                      <p>{notification.message}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

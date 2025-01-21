@@ -18,7 +18,6 @@ const ManageUsers = () => {
 
   const handleRole = async (e, user) => {
     const role = e.target.value;
-    console.log(typeof role, user.email);
    
     try {
       const response = await axiosSecure.patch(

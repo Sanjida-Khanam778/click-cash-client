@@ -1,14 +1,19 @@
 import React from 'react';
-import useRole from '../../../hooks/useRole';
 import Loader from '../../Loader/Loader';
 import { Navigate } from 'react-router-dom';
+import useRole from '../../../hooks/useRole';
+import useAuth from '../../../hooks/useAuth';
 
 const MyHome = () => {
     const [role, isLoading] = useRole()
-    console.log(role)
+    const{loading} = useAuth()
     if(isLoading){
         return <Loader></Loader>
     }
+    if(loading){
+        return <Loader></Loader>
+    }
+
     if(role==='Worker'){
         return <Navigate to={'/dashboard/workerHome'}></Navigate>
     }

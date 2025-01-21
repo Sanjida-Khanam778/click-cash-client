@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
-import useRole from '../hooks/useRole'
 import Loader from '../pages/Loader/Loader'
+import useRole from '../hooks/useRole'
 
 const WorkerRoute = ({ children }) => {
   const [role, isLoading] = useRole()

@@ -5,7 +5,6 @@ import WithdrawRequest from './AdminHome/WithdrawRequest';
 const AdminHome = () => {
     return (
         <div>
-           
             <AdminStates></AdminStates>
             <WithdrawRequest></WithdrawRequest>
         </div>

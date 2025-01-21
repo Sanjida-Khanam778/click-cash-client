@@ -19,7 +19,9 @@ const BestWorkers = () => {
       <SharedTitle title={"Top 6 Workers"}></SharedTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
         {workers.map((worker) => (
-          <div  data-aos="fade-up" data-aos-once="false"
+          <div
+            data-aos="fade-up"
+            data-aos-once="false"
             className="relative flex items-center justify-center h-80 w-full bg-gray-100 rounded-lg shadow-lg overflow-hidden"
             key={worker._id}
           >

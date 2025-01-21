@@ -18,9 +18,7 @@ const AddTask = () => {
   const [coin, , refetch] = useCoin();
   const onSubmit = async (data) => {
     setLoading(true)
-    console.log(data.taskImg[0]);
     const taskImg = await imageUpload(data.taskImg[0]);
-    console.log(taskImg);
     const taskData = {
       title: data.title,
       details: data.details,
@@ -35,21 +33,18 @@ const AddTask = () => {
     };
     // Total payable amount  ( required_workers * payable_amount )
     const totalPayableAmount = data.workers * data.amount;
-    console.log(totalPayableAmount);
     if (totalPayableAmount > coin) {
       toast.error("Not available Coin. Purchase Coin");
       return navigate("/dashboard/purchaseCoin");
     }
 
     const res = await axiosSecure.post("addTask", taskData);
-    console.log(res.data);
     if (res.data.insertedId) {
       setLoading(false)
       toast.success("Successfully added task");
       axiosSecure
         .patch(`/users/${user?.email}`, { coin: totalPayableAmount })
         .then((res) => {
-          console.log(res.data);
           refetch();
         });
     }

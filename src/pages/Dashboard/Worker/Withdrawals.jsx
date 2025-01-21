@@ -14,7 +14,6 @@ const Withdrawals = () => {
 
   if (isLoading) return <p className="text-center text-lg">Loading...</p>;
   const withdrawalAmount = coin / 20;
-  console.log(withdrawalAmount);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,12 +38,11 @@ const Withdrawals = () => {
       amount,
       status: "Pending",
     };
-    console.log(withdrawData);
 
     const { data } = await axiosSecure.post("/withdraw", withdrawData);
 
     if (data.insertedId) {
-      toast.success("withdrawal Successful");
+      toast.success("Withdrawal request is sent to admin. Please wait for approval.");
     }
   };
   const handleCoinChange = (e) => {

@@ -26,12 +26,10 @@ const ManageTask = () => {
     },
   });
 
-  console.log(tasks);
 
   const handleDelete = async () => {
     if (selectedTask._id) {
       const refillAmount = selectedTask.workers * selectedTask.amount;
-      console.log(refillAmount);
       try {
         await axiosSecure.delete(
           `/tasks/${selectedTask._id}?refillAmount=${refillAmount}`, {refillAmount}
@@ -48,7 +46,7 @@ const ManageTask = () => {
   if (isLoading) return <p className="text-center text-lg">Loading tasks...</p>;
   return (
     <div className="my-10 md:my-16 lg:my-20">
-      <SharedTitle title={"Manage all Tasks"} subtitle={"all the task"}></SharedTitle>
+      <SharedTitle title={"Manage all Tasks"} subtitle={""}></SharedTitle>
       <div className="overflow-x-auto w-10/12 mx-auto border border-[#A35C7A]">
         <table className="table">
           {/* head */}

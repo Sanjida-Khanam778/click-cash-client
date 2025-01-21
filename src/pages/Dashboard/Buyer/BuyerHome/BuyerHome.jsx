@@ -1,5 +1,6 @@
+import React from 'react';
 import BuyerStates from './BuyerStates';
-import TaskReview from './TaskReview';
+import TaskReview from './TaskReview'
 
 const BuyerHome = () => {
     return (

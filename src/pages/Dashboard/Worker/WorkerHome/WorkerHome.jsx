@@ -5,7 +5,6 @@ import ApprovedSubmission from './ApprovedSubmission';
 const WorkerHome = () => {
     return (
         <div>
-  
             <WorkerStates></WorkerStates>
             <ApprovedSubmission></ApprovedSubmission>
         </div>

@@ -70,7 +70,6 @@ const TaskDetails = () => {
       workers: parseInt(workers),
       status: "Pending",
     };
-    console.log(submissionData);
     try{
       const { data } = await axiosSecure.post("/submission", submissionData);
       const notificationData = {

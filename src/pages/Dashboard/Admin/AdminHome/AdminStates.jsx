@@ -9,13 +9,13 @@ const AdminStates = () => {
   // const { user } = useAuth();
   const { data: states = {} } = useQuery({
     queryKey: ["buyer-stat"],
+    enabled: !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosSecure(`/admin-stats`);
       return data;
     },
   });
   const { totalWorkers, totalBuyers, totalAvailableCoins, totalPayments } = states;
-  console.log(states);
   return (
     <div className="flex flex-col justify-center items-center my-10 lg:my-20 w-11/12 mx-auto">
       <SharedTitle title={"Admin States"}></SharedTitle>

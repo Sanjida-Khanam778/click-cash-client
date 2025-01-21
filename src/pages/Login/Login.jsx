@@ -6,6 +6,8 @@ import { saveUser } from "../../utilities/utils";
 import { CgSpinnerAlt } from "react-icons/cg";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Lottie from "lottie-react";
+import loginLottie from '../../assets/lottie/login.json'
 
 const Login = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,10 +31,8 @@ const Login = () => {
       //User Login
       const res = await signIn(email, password);
       setUser(res?.user);
-      console.log(res?.user?.email);
 
       const { data } = await axiosPublic(`/users/${res?.user?.email}`);
-      console.log(data.role);
       if (data.role === "Buyer") {
         navigate("/dashboard/buyerHome");
       }
@@ -44,7 +44,6 @@ const Login = () => {
       }
       toast.success("Login Successful");
     } catch (err) {
-      console.log(err);
       setLoading(false);
       toast.error(err?.message);
     }
@@ -58,7 +57,6 @@ const Login = () => {
       // save user info in db if the user is new
       await saveUser({ ...data?.user, coin: 0 });
       const { data:role } = await axiosPublic(`/users/${data?.user?.email}`);
-      console.log(role.role);
       if (role.role === "Buyer") {
         navigate("/dashboard/buyerHome");
       }
@@ -71,12 +69,14 @@ const Login = () => {
       // navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
-      console.log(err);
       toast.error(err?.message);
     }
   };
   return (
-    <div className="flex justify-center my-10 md:my-16 items-center bg-white">
+    <div className="flex flex-col lg:flex-row justify-center my-10 md:my-16 items-center bg-white">
+      <div className="text-center lg:text-left p-20">
+        <Lottie animationData={loginLottie}></Lottie>
+      </div>
       <div className="flex flex-col max-w-md p-6 rounded-lg sm:p-10 bg-[#FBF5E5] text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Log In</h1>

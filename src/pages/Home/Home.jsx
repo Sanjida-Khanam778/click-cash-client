@@ -11,8 +11,7 @@ import About from './About';
 const Home = () => {
     useEffect(() => {
         Aos.init({
-          duration: 1000, // Animation duration in ms
-          once: true, // Whether animation should happen only once
+          duration: 1000, 
           mirror: true,
           once: true
         });

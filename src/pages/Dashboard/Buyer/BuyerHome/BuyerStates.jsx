@@ -6,16 +6,17 @@ import useAuth from "../../../../hooks/useAuth";
 
 const BuyerStates = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const { data: states = {} } = useQuery({
     queryKey: ["buyer-stat"],
+    enabled:
+    !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosSecure(`/buyer-stats/${user?.email}`);
       return data;
     },
   });
   const { totalTaskCount, pendingTaskCount, totalPayments } = states;
-  console.log(states);
   return (
     <div className="flex flex-col justify-center items-center my-10 lg:my-20">
       <SharedTitle

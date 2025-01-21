@@ -6,7 +6,8 @@ import { imageUpload, saveUser } from "../../utilities/utils";
 import { useState } from "react";
 import { CgSpinnerAlt } from "react-icons/cg";
 import useCoin from "../../hooks/useCoin";
-
+import Lottie from "lottie-react";
+import registerLottie from "../../assets/lottie/register.json"
 const SignUp = () => {
   const [role, setRole] = useState("Worker");
   const [coin, setCoin] = useState(null);
@@ -27,8 +28,6 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
-    console.log(image)
-    //1. send image data to imgbb
     const photoURL = await imageUpload(image);
     if (password.length < 6) {
       setError("Length must be at least 6 character ");
@@ -46,21 +45,14 @@ const SignUp = () => {
       return;
     }
     
-    console.log(role, coin);
     try {
-      //2. User Registration
       const result = await createUser(email, password);
-
-      //3. Save username & profile photo
       await updateUserProfile(name, photoURL);
-      console.log("Update profile", result.user);
-      // save user info in db if the user is new
       await saveUser({ ...result?.user, coin });
       refetch()
       navigate(from, { replace: true });
       toast.success("Signup Successful");
     } catch (err) {
-      console.log(err);
       setLoading(false)
       toast.error(err?.message);
     }
@@ -69,20 +61,20 @@ const SignUp = () => {
   // Handle Google Signin
   const handleGoogleSignIn = async () => {
     try {
-      //User Registration using google
       const data = await signInWithGoogle();
       await saveUser({...data.user, coin:10});
-      console.log({...data.user, coin:10});
       navigate(from, { replace: true });
       toast.success("Signup Successful");
     } catch (err) {
-      console.log(err);
       setLoading(false)
       toast.error(err?.message);
     }
   };
   return (
-    <div className="flex mb-10 md:mb-16 justify-center items-center min-h-screen bg-white">
+    <div className="flex flex-col lg:flex-row gap-20 my-10 md:my-16 lg:my-20 justify-center items-center min-h-screen bg-white">
+      <div className="text-center lg:text-left lg:w-1/3 p-10">
+        <Lottie animationData={registerLottie}></Lottie>
+      </div>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-[#FBF5E5] text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign Up</h1>

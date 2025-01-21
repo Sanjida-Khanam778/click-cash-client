@@ -5,10 +5,12 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 
 const ApprovedSubmission = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { data: submissions = [] } = useQuery({
     queryKey: ["approved-submission"],
+    enabled:
+    !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const response = await axiosSecure(
         `/mySubmission/${user?.email}?approved=${true}`
@@ -16,7 +18,6 @@ const ApprovedSubmission = () => {
       return response.data;
     },
   });
-  console.log(submissions);
   return (
     <div>
       <SharedTitle title={"Approved Submission"}></SharedTitle>

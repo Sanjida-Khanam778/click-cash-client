@@ -18,12 +18,12 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../pages/Payments/Payment";
-import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome";
 import TaskDetails from "../pages/Dashboard/Worker/TaskDetails";
-import WorkerHome from "../pages/Dashboard/Worker/WorkerHome/WorkerHome";
-import BuyerRoute from "./WorkerRoute";
 import AdminRoute from "./AdminRoute";
+import WorkerHome from "../pages/Dashboard/Worker/WorkerHome/WorkerHome";
 import WorkerRoute from "./WorkerRoute";
+import BuyerRoute from "./BuyerRoute";
+import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome"
 export const router = createBrowserRouter([
   {
     path: "/",

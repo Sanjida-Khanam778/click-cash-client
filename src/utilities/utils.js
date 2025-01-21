@@ -21,5 +21,4 @@ export const saveUser = async (user) => {
     email: user?.email,
     coin: user?.coin,
   });
-  console.log(data.data);
 };

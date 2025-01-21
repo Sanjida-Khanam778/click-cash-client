@@ -9,7 +9,7 @@ import useCoin from "../../../../hooks/useCoin";
 
 const TaskReview = () => {
   const [, , refetch] = useCoin();
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   let [isOpen, setIsOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
@@ -25,6 +25,8 @@ const TaskReview = () => {
 
   const { data: submissions = [], refetch: submissionRefetch } = useQuery({
     queryKey: ["buyer-submissions"],
+    enabled:
+    !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const response = await axiosSecure(
         `/allSubmissions/buyer/${user?.email}`
@@ -39,7 +41,6 @@ const TaskReview = () => {
 
   const handleApproval = async (submission) => {
     const amount = parseInt(submission.amount);
-    // console.log(submission.amount)
     const workerEmail = submission?.worker?.workerEmail;
     try {
       const { data } = await axiosSecure.patch(
@@ -58,33 +59,17 @@ const TaskReview = () => {
         refetch();
         submissionRefetch();
         toast.success("Task is approved.");
-
-        // const {data: notification={}} = useQuery({
-        //   queryKey: ['notification'],
-        //   queryFn: async()=>{
-        //     const { data } = await axiosSecure.post(
-        //       "/notifications",
-        //       notificationData
-        //     );
-        //     return data
-        //   }
-        // })
-
         const { data: notification } = await axiosSecure.post(
           "/notifications",
           notificationData
         );
-
-        console.log(notification);
       }
     } catch (error) {
-      console.log(error.message);
       toast.error(error.message);
     }
   };
 
   const handleReject = async (submission) => {
-    // console.log(id);
     try {
       const { data } = await axiosSecure.patch(
         `/submission/${submission._id}?reject=${true}`
@@ -105,7 +90,6 @@ const TaskReview = () => {
         );
       }
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data.message);
     }
   };

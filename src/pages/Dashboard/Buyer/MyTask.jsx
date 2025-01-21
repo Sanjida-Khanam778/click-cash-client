@@ -33,7 +33,6 @@ const MyTask = () => {
       return res.data;
     },
   });
-  console.log(tasks);
 
   const handleUpdate = async (task) => {
     setSelectedTask(task);
@@ -43,7 +42,6 @@ const MyTask = () => {
   const handleDelete = async () => {
     if (selectedTask._id) {
       const refillAmount = selectedTask.workers * selectedTask.amount;
-      console.log(refillAmount);
       try {
         await axiosSecure.delete(`/tasks/${selectedTask._id}?refillAmount=${refillAmount}`, {
           refillAmount,
