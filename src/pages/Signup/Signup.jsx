@@ -8,6 +8,7 @@ import { CgSpinnerAlt } from "react-icons/cg";
 import useCoin from "../../hooks/useCoin";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/lottie/register.json"
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const SignUp = () => {
   const [role, setRole] = useState("Worker");
   const [coin, setCoin] = useState(null);
@@ -16,9 +17,9 @@ const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading, setLoading } =
     useAuth();
   const navigate = useNavigate();
-  // form submit handler
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+  const axiosPublic = useAxiosPublic()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -50,7 +51,16 @@ const SignUp = () => {
       await updateUserProfile(name, photoURL);
       await saveUser({ ...result?.user, coin });
       refetch()
-      navigate(from, { replace: true });
+      const { data } = await axiosPublic(`/users/${result?.user?.email}`);
+      if (data.role === "Buyer") {
+        navigate("/dashboard/buyerHome");
+      }
+      if (data.role === "Admin") {
+        navigate("/dashboard/adminHome");
+      }
+      if (data.role === "Worker") {
+        navigate("/dashboard/workerHome");
+      }
       toast.success("Signup Successful");
     } catch (err) {
       setLoading(false)
@@ -63,7 +73,18 @@ const SignUp = () => {
     try {
       const data = await signInWithGoogle();
       await saveUser({...data.user, coin:10});
-      navigate(from, { replace: true });
+      refetch()
+      const { data:userRole } = await axiosPublic(`/users/${data?.user?.email}`);
+      if (userRole.role === "Buyer") {
+        navigate("/dashboard/buyerHome");
+      }
+      if (userRole.role === "Admin") {
+        navigate("/dashboard/adminHome");
+      }
+      if (userRole.role === "Worker") {
+        navigate("/dashboard/workerHome");
+      }
+      // toast.success("Login Successful");
       toast.success("Signup Successful");
     } catch (err) {
       setLoading(false)
