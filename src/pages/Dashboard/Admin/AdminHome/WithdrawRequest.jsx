@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import toast from "react-hot-toast";
 import useCoin from "../../../../hooks/useCoin";
 
-const WithdrawRequest = () => {
+const WithdrawRequest =   () => {
     const [, , refetch] = useCoin()
   const axiosSecure = useAxiosSecure();
   const { data: withdraws, isLoading, refetch:withdrawRefetch } = useQuery({

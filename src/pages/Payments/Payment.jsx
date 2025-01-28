@@ -13,7 +13,7 @@ const Payment = () => {
     <div className="my-10 lg:my-20">
       <SharedTitle
         title={"PAYMENT"}
-        subtitle={"Please pay to eat"}
+        subtitle={"Please pay to purchase coin"}
       ></SharedTitle>
       <div>
         <Elements stripe={stripePromise}>
