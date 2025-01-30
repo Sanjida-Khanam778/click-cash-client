@@ -2,6 +2,13 @@
 import { Link } from 'react-router-dom'
 
 const Slide = ({ image, text, subtitle }) => {
+  const getButtonText = () => {
+    if (text.includes("Free Time")) return "Start Earning Now";
+    if (text.includes("Microtasks")) return "Find Tasks";
+    if (text.includes("Simplicity")) return "Sign Up Today";
+    if (text.includes("Earn More")) return "Join & Get Paid";
+    return "Get Started";
+  };
   return (
     <div
       className='w-full bg-center bg-cover h-[38rem]'
@@ -19,11 +26,10 @@ const Slide = ({ image, text, subtitle }) => {
           </p>
           <br />
           <Link
-            onClick={() => window.open("https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778", "_blank")}
-            to='/'
+            to='/dashboard'
             className='btn w-full px-5 py-3 mt-4 text-sm font-medium bg-[#A35C7A] text-white capitalize transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-[#A35C7A] focus:outline-none focus:bg-[#A35C7A]'
           >
-            Join as Developer
+          {getButtonText()}
           </Link>
         </div>
       </div>
