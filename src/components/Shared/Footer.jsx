@@ -33,7 +33,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className=" flex justify-center items-center bg-[#e9ddbf] py-5 lg:py-10 h-full">
+          <div className=" flex justify-center items-center bg-[#e9ddbf] py-5 px-5 md:px-0 lg:py-10 h-full">
             <div className="p-1 lg:p-10 flex flex-col lg:w-9/12 mx-auto">
               <div className="flex justify-center md:justify-center gap-5 mb-5">
                 <Link
