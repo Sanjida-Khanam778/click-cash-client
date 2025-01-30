@@ -81,6 +81,7 @@ const FeedbackSlider = () => {
         // slidesPerView={4}
         // spaceBetween={20}
         centeredSlides={true}
+        loop={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         pagination={{
           clickable: true,
