@@ -39,7 +39,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className={`w-11/12 xl:w-10/12 mx-auto py-3`}>
+    <div className={`w-11/12 xl:w-10/12 mx-auto md:py-3`}>
       <div className="navbar justify-between px-0">
         <div className="">
           <div className="dropdown">
@@ -82,18 +82,18 @@ const Navbar = () => {
                     {coin}
                   </button>
                 )}
-                <div className="relative group mr-3">
+                <div className="relative group mr-3 flex md:flex-col items-center">
                   <img
                     referrerPolicy="no-referrer"
                     src={user?.photoURL}
-                    className="h-12 w-12 rounded-full"
+                    className="h-8 w-8 md:h-12 md:w-12 rounded-full"
                   />
                   <div className="absolute z-10 w-32 -bottom-8 -right-10 transform -translate-x-1/2 bg-white text-black text-sm px-3 py-1 opacity-0 group-hover:opacity-100 transition duration-300">
                     {user?.displayName}
                   </div>
                 </div>
                 <Link onClick={logOut}>
-                  <button className="btn text-white bg-[#A35C7A] border-none">
+                  <button className="btn text-white bg-[#A35C7A] rounded-md hover:bg-[#A35C7A] border-none">
                     <span className="hidden md:block">Logout</span>
                     <span className="md:hidden text-xl">
                       <BiLogOutCircle></BiLogOutCircle>
@@ -104,12 +104,12 @@ const Navbar = () => {
             ) : (
               <>
                 <Link className="mx-3" to={"/login"}>
-                  <button className="btn text-black px-2 md:px-4 border-black bg-transparent">
+                  <button className="btn text-black rounded-md px-2 md:px-4 border-black bg-transparent">
                     Login
                   </button>
                 </Link>
                 <Link className="" to={"/signup"}>
-                  <button className="btn rounded-md px-2 md:px-4 bg-[#A35C7A] text-white border-none">
+                  <button className="btn rounded-md px-2 md:px-4 bg-[#A35C7A] hover:bg-[#A35C7A] text-white border-none">
                     Register
                   </button>
                 </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
                   "_blank"
                 )
               }
-              className="btn btn-outline ml-3 hidden md:block"
+              className="btn btn-outline ml-3 hidden rounded-md md:block"
             >
               Join as Developer
             </button>
