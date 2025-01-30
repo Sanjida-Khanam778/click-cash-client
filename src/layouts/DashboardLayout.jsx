@@ -213,7 +213,7 @@ const DashboardLayout = () => {
           checked={isDrawerOpen}
           onChange={(e) => setIsDrawerOpen(e.target.checked)}
         />
-        {/* Navbar */}
+        
         <div className="drawer-content flex flex-col ">
           {/* Main Content */}
           <div className="flex flex-col justify-between min-h-screen pt-16">
@@ -225,13 +225,13 @@ const DashboardLayout = () => {
         </div>
 
         {/* Sidebar/Drawer */}
-        <div className="drawer-side h-full mt-20 lg:pt-20 lg:mt-0">
+        <div className="drawer-side h-full mt-20 fixed h-screen lg:pt-20 lg:mt-0">
           <label
             htmlFor="dashboard-drawer"
             className="drawer-overlay"
             onClick={() => setIsDrawerOpen(false)}
           ></label>
-          <ul className="menu p-4 pt-6 w-80 bg-[#e9ddbf] text-black  h-full">
+          <ul className="menu p-4 pt-6 w-80 bg-[#e9ddbf] h-full text-black">
             {menuItems}
           </ul>
         </div>
