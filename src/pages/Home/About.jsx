@@ -6,7 +6,7 @@ const About= () => {
         <div className="container mx-auto px-6 lg:px-20">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Image Section */}
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/2" data-aos="fade-right" data-aos-once="false">
               <img
                 src={about}
                 alt="About Us"
@@ -15,7 +15,7 @@ const About= () => {
             </div>
   
             {/* Text Section */}
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/2" data-aos="fade-left" data-aos-once="false">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 About Us
               </h2>
