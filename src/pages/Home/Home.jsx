@@ -17,7 +17,7 @@ const Home = () => {
         });
       }, []);
     return (
-        <div>
+        <div className='w-full overflow-hidden'>
             <Helmet>
                 <title>Home | Click Cash</title>
             </Helmet>

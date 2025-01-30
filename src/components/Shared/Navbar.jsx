@@ -10,16 +10,28 @@ import { BiLogOutCircle } from "react-icons/bi";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [ coin, isLoading, refetch]  = useCoin();
+  const [coin, isLoading, refetch] = useCoin();
   const links = (
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
       {user && user?.email && (
-        <li>
-          <NavLink to={"/dashboard"}>Dashboard</NavLink>
-        </li>
+        <>
+          <li>
+            <NavLink to={"/dashboard"}>Dashboard</NavLink>
+          </li>
+          <li className="ml-3 block md:hidden" onClick={() =>
+                window.open(
+                  "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
+                  "_blank"
+                )
+              }>
+            
+              Join as Developer
+           
+          </li>
+        </>
       )}
     </>
   );
@@ -56,12 +68,12 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <img className="h-5 md:h-9 mr-2 md:mr-4 hidden md:block" src={logo} alt="" />
+          <img className="h-8 md:h-9 mr-2 md:mr-4 " src={logo} alt="" />
           <Link
             to={"/"}
             className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont"
           >
-            <p className="tracking-widest">
+            <p className="tracking-widest hidden md:block">
               Click<span className="text-[#A35C7A]"> Cash</span>
             </p>
           </Link>
@@ -93,7 +105,10 @@ const Navbar = () => {
                 </div>
                 <Link onClick={logOut}>
                   <button className="btn text-white bg-[#A35C7A] border-none">
-                    <span className="hidden md:block">Logout</span><span className="md:hidden text-xl"><BiLogOutCircle></BiLogOutCircle></span>
+                    <span className="hidden md:block">Logout</span>
+                    <span className="md:hidden text-xl">
+                      <BiLogOutCircle></BiLogOutCircle>
+                    </span>
                   </button>
                 </Link>
               </>
@@ -118,9 +133,9 @@ const Navbar = () => {
                   "_blank"
                 )
               }
-              className="btn btn-outline ml-3"
+              className="btn btn-outline ml-3 hidden md:block"
             >
-              Join <span className="hidden md:flex">as Developer</span>
+              Join as Developer
             </button>
           </div>
         </div>

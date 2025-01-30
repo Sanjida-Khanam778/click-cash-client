@@ -148,7 +148,7 @@ const DashboardLayout = () => {
               to={"/"}
               className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont"
             >
-              <p className="tracking-widest">
+              <p className="tracking-widest hidden md:block">
                 Click<span className="text-[#A35C7A]"> Cash</span>
               </p>
             </Link>
@@ -157,7 +157,7 @@ const DashboardLayout = () => {
             <div className="flex flex-col items-end">
               <div className="flex p-1">
                 <button className="flex items-center px-4 bg-transparent border-r-2 border-black font-bold">
-                  <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
+                  <TbCoinFilled className="text-xl md:text-3xl text-[#f1e027] mr-1" />
                   {coin}
                 </button>
                 <img
@@ -168,8 +168,8 @@ const DashboardLayout = () => {
                 />
               </div>
               <div className="flex p-1">
-                <p className="mr-3 text-sm md:text-base font-medium">{role}</p>
-                <p className="border-l-2 pl-3 text-sm md:text-base font-medium border-black">
+                <p className="mr-3 text-xs md:text-base font-medium">{role}</p>
+                <p className="border-l-2 pl-3 text-xs md:text-base font-medium border-black">
                   {user?.displayName}
                 </p>
               </div>
