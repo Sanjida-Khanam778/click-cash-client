@@ -58,8 +58,28 @@ const FeedbackSlider = () => {
         What Our Users Say
       </h2>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
+      breakpoints={{
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1440: {
+          slidesPerView: 4,
+          spaceBetween: 15,
+        },
+        }}
+        // slidesPerView={4}
+        // spaceBetween={20}
         centeredSlides={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         pagination={{
