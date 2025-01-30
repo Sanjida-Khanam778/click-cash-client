@@ -139,11 +139,11 @@ const DashboardLayout = () => {
             >
               <HiMenuAlt3 className="text-2xl md:text-4xl" />
             </button>
-            <img
-              className="h-5 md:h-9 mr-2 md:mr-4 hidden md:block"
+            <Link to={'/'}><img
+              className="h-7 md:h-9 mr-2 md:mr-4"
               src={logo}
               alt=""
-            />
+            /></Link>
             <Link
               to={"/"}
               className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont"
@@ -151,6 +151,7 @@ const DashboardLayout = () => {
               <p className="tracking-widest hidden md:block">
                 Click<span className="text-[#A35C7A]"> Cash</span>
               </p>
+              
             </Link>
           </div>
           <div className="flex items-center gap-4 md:gap-8">
@@ -168,8 +169,8 @@ const DashboardLayout = () => {
                 />
               </div>
               <div className="flex p-1">
-                <p className="mr-3 text-xs md:text-base font-medium">{role}</p>
-                <p className="border-l-2 pl-3 text-xs md:text-base font-medium border-black">
+                <p className="mr-0 md:mr-3 text-xs md:text-base font-medium">{role}</p>
+                <p className="border-l-2 pl-3 text-xs md:text-base hidden md:block font-medium border-black">
                   {user?.displayName}
                 </p>
               </div>

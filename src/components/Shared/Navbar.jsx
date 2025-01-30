@@ -115,12 +115,12 @@ const Navbar = () => {
             ) : (
               <>
                 <Link className="mx-3" to={"/login"}>
-                  <button className="btn bg-[#C890A7] text-white px-2 md:px-4 border-none">
+                  <button className="btn text-black px-2 md:px-4 border-black bg-transparent">
                     Login
                   </button>
                 </Link>
                 <Link className="" to={"/signup"}>
-                  <button className="btn px-2 md:px-4 bg-[#A35C7A] text-white border-none">
+                  <button className="btn rounded-md px-2 md:px-4 bg-[#A35C7A] text-white border-none">
                     Register
                   </button>
                 </Link>
