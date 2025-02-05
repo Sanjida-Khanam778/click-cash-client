@@ -36,6 +36,33 @@ Click Care is a Micro-Task and Earning Platform designed to connect workers and 
 - Database: Firebase
 - Payment Integration: Stripe
 
+## Dependencies:
+```
+"dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.5.0",
+    "@tanstack/react-query": "^5.64.1",
+    "@tanstack/react-router": "^1.95.6",
+    "aos": "^2.3.4",
+    "axios": "^1.7.9",
+    "date-fns": "^4.1.0",
+    "firebase": "^11.1.0",
+    "localforage": "^1.10.0",
+    "lottie-react": "^2.4.0",
+    "match-sorter": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.1",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.1",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.10",
+    "swiper": "^11.2.1"
+  }
+```
 ## Getting Started
 ### Prerequisites
 - Node.js
