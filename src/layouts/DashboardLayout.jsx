@@ -225,7 +225,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Sidebar/Drawer */}
-        <div className="drawer-side h-full mt-20 fixed h-screen lg:pt-20 lg:mt-0">
+        <div className="drawer-side mt-20 fixed h-screen lg:pt-20 lg:mt-0">
           <label
             htmlFor="dashboard-drawer"
             className="drawer-overlay"
