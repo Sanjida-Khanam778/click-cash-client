@@ -16,7 +16,7 @@ const TaskList = () => {
   });
 
   if (isLoading) return <p className="text-center text-lg">Loading tasks...</p>;
-
+ 
   return (
     <div className="w-11/12 mx-auto py-6 my-10 ">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">Task List</h2>
