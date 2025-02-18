@@ -77,11 +77,11 @@ const Profile = () => {
             Earnings and Stats
           </h3>
           <div className="grid grid-cols-2 gap-6">
-            <div className="bg-blue-50 p-4 rounded-lg text-center shadow">
+            <div className="bg-[#FBF5E5] p-4 rounded-lg text-center shadow">
               <h4 className="text-gray-600">Total Earnings</h4>
               <p className="text-2xl font-bold text-blue-600">$1200</p>
             </div>
-            <div className="bg-green-50 p-4 rounded-lg text-center shadow">
+            <div className="bg-[#FBF5E5] p-4 rounded-lg text-center shadow">
               <h4 className="text-gray-600">Tasks Completed</h4>
               <p className="text-2xl font-bold text-green-600">45</p>
             </div>

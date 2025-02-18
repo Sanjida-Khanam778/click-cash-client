@@ -18,18 +18,30 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
+      <li className="lg:block hidden">
+        /
+      </li>
       <li>
         <NavLink to={"/profile"}>Profile</NavLink>
       </li>
+      <li className="lg:block hidden">
+        /
+      </li>
       <li>
         <NavLink to={"/blog"}>Blog</NavLink>
+      </li>
+      <li className="lg:block hidden">
+        /
       </li>
       {user && user?.email && (
         <>
           <li>
             <NavLink to={"/dashboard"}>Dashboard</NavLink>
           </li>
-          <li className="ml-3 lg:ml-0 block " onClick={() =>
+          <li className="lg:block hidden">
+        /
+      </li>
+          <li className="ml-3 md:ml-0 block " onClick={() =>
                 window.open(
                   "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
                   "_blank"
@@ -58,7 +70,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content  text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
