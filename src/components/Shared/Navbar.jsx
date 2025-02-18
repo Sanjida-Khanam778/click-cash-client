@@ -57,7 +57,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className={`w-11/12 xl:w-10/12 mx-auto md:py-3`}>
+    <div className={`w-11/12 mx-auto md:py-3`}>
       <div className="navbar justify-between px-0">
         <div className="">
           <div className="dropdown">
@@ -83,10 +83,10 @@ const Navbar = () => {
             <p className="tracking-widest hidden md:block">
               Click<span className="text-[#A35C7A]"> Cash</span>
             </p>
-          </Link>
+          </Link> 
         </div>
         <div>
-          <div className=" lg:justify-end  hidden lg:flex">
+          <div className=" lg:justify-end hidden lg:flex">
             <ul className={`flex gap-5 px-1 font-bold`}>{links}</ul>
           </div>
           <div className="flex">
