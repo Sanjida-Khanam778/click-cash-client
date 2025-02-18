@@ -46,7 +46,7 @@ const TaskList = () => {
              <FaUsers className="text-purple-500" /> {task.workers} Workers Required
            </p>
          </div>
-       
+         
          {/* Button */}
          <Link to={`/taskDetails/${task._id}`}>
            <button className="mt-4 flex items-center gap-2 bg-[#C890A7] text-white px-4 py-2 rounded-md hover:bg-[#A35C7A] transition duration-200">
