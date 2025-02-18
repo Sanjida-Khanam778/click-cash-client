@@ -25,12 +25,12 @@ const Slide = ({ image, text, subtitle }) => {
             {subtitle}
           </p>
           <br />
-          <Link
+          {/* <Link
             to='/dashboard'
             className='btn w-full px-5 py-3 mt-4 text-sm font-medium bg-[#A35C7A] text-white capitalize transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-[#A35C7A] focus:outline-none focus:bg-[#A35C7A]'
           >
           {getButtonText()}
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

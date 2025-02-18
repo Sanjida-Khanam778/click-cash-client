@@ -1,93 +1,92 @@
-import React, { useState } from "react";
+import React from "react";
 
 const blogs = [
   {
     id: 1,
-    title: "How to Maximize Your Earnings on Click Care",
-    summary: "Learn the best strategies to earn more as a worker on Click Care.",
-    content:
-      "Click Care offers a wealth of opportunities to earn by completing micro-tasks. To maximize your earnings, focus on tasks that match your skills, maintain a high approval rate, and stay active on the platform.",
-    image: "https://via.placeholder.com/800x400",
+    title: "How to Maximize Your Earnings on Click Cash",
+    summary:
+      "Explore actionable tips to maximize your income by completing tasks effectively on Click Cash.",
+    image: "https://i.imgur.com/5AEyQcB.png",
     author: "John Doe",
-    publishedDate: "February 18, 2025",
-    category: "Earning Tips",
+    date: "February 18, 2025",
   },
   {
     id: 2,
-    title: "Why Buyers Love Using Click Care for Outsourcing Tasks",
-    summary: "Discover how buyers are using Click Care to streamline task management.",
-    content:
-      "Click Care provides buyers with an easy-to-use platform for outsourcing tasks. The streamlined task management and secure payment options make it a preferred choice for businesses.",
-    image: "https://via.placeholder.com/800x400",
+    title: "Why Click Cash is the Future of Micro-Tasking",
+    summary:
+      "Discover how Click Cash is revolutionizing the micro-tasking world with innovative features.",
+    image: "https://i.imgur.com/2qfCvFS.jpeg",
     author: "Jane Smith",
-    publishedDate: "February 15, 2025",
-    category: "Task Management",
+    date: "February 15, 2025",
+  },
+  {
+    id: 3,
+    title: "Top 5 Tips for Buyers on Click Cash",
+    summary:
+      "Learn the best practices for buyers to create tasks and get the best results from workers.",
+    image: "https://i.imgur.com/kFgYHDI.png",
+    author: "Mike Johnson",
+    date: "February 12, 2025",
   },
 ];
 
 const Blog = () => {
-  const [selectedBlog, setSelectedBlog] = useState(null);
-
-  const handleBlogClick = (blog) => {
-    setSelectedBlog(blog);
-  };
-
-  const handleBackToList = () => {
-    setSelectedBlog(null);
-  };
-
   return (
-    <section className="container mx-auto py-12 px-6">
-      {selectedBlog ? (
-        // Individual Blog Post View
-        <article>
-          <button
-            onClick={handleBackToList}
-            className="mb-4 text-blue-500 hover:underline"
-          >
-            Back to Blogs
-          </button>
-          <h1 className="text-4xl font-bold mb-4">{selectedBlog.title}</h1>
-          <p className="text-gray-500 mb-8">
-            By {selectedBlog.author} | Published on {selectedBlog.publishedDate}
-          </p>
-          <img
-            src={selectedBlog.image}
-            alt={selectedBlog.title}
-            className="w-full rounded-lg mb-6"
-          />
-          <div className="text-gray-700 text-lg leading-relaxed mb-12">
-            {selectedBlog.content}
+    <section className="py-12 w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+      {/* Left Section */}
+      <div className="flex justify-center">
+        <div className="rounded-lg overflow-hidden border w-full">
+          {/* Image */}
+          <div className="h-80 flex justify-center w-full items-center">
+            <img
+              src="https://i.imgur.com/IlLGIsm.png" // Replace with your image URL
+              alt="Extra Income"
+              className="h-full w-full object-cover w-full"
+            />
           </div>
-        </article>
-      ) : (
-        // Blog List View
-        <div>
-          <h1 className="text-4xl font-bold text-center mb-8">Our Blog</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogs.map((blog) => (
-              <div
-                key={blog.id}
-                className="rounded-lg shadow-md bg-white cursor-pointer"
-                onClick={() => handleBlogClick(blog)}
-              >
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full rounded-t-lg"
-                />
-                <div className="p-4">
-                  <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
-                  <p className="text-gray-600 mb-4">{blog.summary}</p>
-                  <button className="text-blue-500 hover:underline">
-                    Read More
-                  </button>
-                </div>
-              </div>
-            ))}
+
+          {/* Content */}
+          <div className="p-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Click Cash will bring you extra income!
+            </h2>
+            <p className="text-gray-600 text-base md:text-lg">
+              Earn extra income from your app and invite developers to join
+              Click Cash.
+            </p>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Right Section */}
+      <div className="space-y-6">
+        {blogs.map((blog) => (
+          <div
+            key={blog.id}
+            className="flex flex-col md:flex-row border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+          >
+            {/* Blog Image */}
+            <div className="w-full md:w-1/3 h-40">
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Blog Content */}
+            <div className="flex flex-col justify-center p-4 md:w-2/3">
+              <h2 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 hover:text-[#A35C7A] transition duration-200">
+                {blog.title}
+              </h2>
+              <p className="text-gray-600 text-sm mb-2">{blog.summary}</p>
+              <p className="text-gray-400 text-xs">
+                By {blog.author} | {blog.date}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
