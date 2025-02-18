@@ -79,20 +79,11 @@ const Navbar = () => {
           <div className=" lg:justify-end hidden lg:flex">
             <ul className={`flex gap-5 px-1 font-bold`}>{links}</ul>
           </div>
-          <div className={`flex items-center xl:mx-2`}>
-                  <BiSun className="mr-1 text-xl hidden md:block"></BiSun>
-
-                  <input
-                    type="checkbox"
-                    value={theme}
-                    onChange={handleToggle}
-                    className={`toggle theme-controller mr-1 `}
-                  />
-                  <BiMoon className="text-xl hidden md:block"></BiMoon>
-                </div>
+         
           <div className="flex">
             {user && user?.email ? (
               <>
+
                 {isLoading ? (
                   <CgSpinnerAlt className="animate-spin m-auto" />
                 ) : (
@@ -101,7 +92,18 @@ const Navbar = () => {
                     {coin}
                   </button>
                 )}
-               
+                 <div className={`flex items-center xl:mx-2`}>
+            <BiSun className="mr-1 text-xl hidden md:block"></BiSun>
+
+            <input
+              type="checkbox"
+              value={theme}
+              onChange={handleToggle}
+              className={`toggle theme-controller mr-1 `}
+            />
+            <BiMoon className="text-xl hidden md:block"></BiMoon>
+          </div>
+
                 <div className="relative group mr-3 flex md:flex-col items-center">
                   <img
                     referrerPolicy="no-referrer"

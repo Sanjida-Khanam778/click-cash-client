@@ -130,9 +130,9 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div>
+    <div className={`${theme==='dark'?'text-white':'text-black'}`}>
       <ScrollRestoration />
-      <nav className="bg-[#FBF5E5] w-full fixed top-0 z-50 ">
+      <nav className="{` w-full fixed top-0 bg-[#FBF5E5] z-50 ${theme==='dark'?'bg-black':'bg-[#FBF5E5]'}`} ">
         <div className="w-10/12 mx-auto py-2 flex items-center justify-between">
           <div className="flex items-center">
             <button

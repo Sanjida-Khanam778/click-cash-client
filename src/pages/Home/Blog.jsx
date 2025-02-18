@@ -42,7 +42,7 @@ const Blog = () => {
             <img
               src="https://i.imgur.com/IlLGIsm.png" // Replace with your image URL
               alt="Extra Income"
-              className="h-full w-full object-cover w-full"
+              className="h-full w-full object-cover"
             />
           </div>
 
