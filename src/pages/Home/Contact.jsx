@@ -1,7 +1,6 @@
 import toast from "react-hot-toast";
 import { BiEnvelope, BiMobile } from "react-icons/bi";
 import { FaLocationPin } from "react-icons/fa6";
-import { IoLocate } from "react-icons/io5";
 
 const Contact = () => {
   const handleSubmit = (e) => {
@@ -12,7 +11,7 @@ const Contact = () => {
 
   return (
     <section className="bg-[#FBF5E5] py-8 ">
-      <div className="container mx-auto w-11/12 mx-auto">
+      <div className="container w-11/12 mx-auto">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Contact Us
         </h2>

@@ -1,0 +1,102 @@
+[
+    {
+          "id": 1,
+          "partnerName": "John Doe",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+          "id": 2,
+          "partnerName": "Jane Smith",
+          "image": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+          "id": 3,
+          "partnerName": "Michael Johnson",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg"
+    },
+    {
+          "id": 4,
+          "partnerName": "Emily Davis",
+          "image": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+          "id": 5,
+          "partnerName": "David Lee",
+          "image": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+          "id": 6,
+          "partnerName": "Sarah Brown",
+          "image": "https://randomuser.me/api/portraits/women/3.jpg"
+    },
+    {
+          "id": 7,
+          "partnerName": "Chris Williams",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg"
+    },
+    {
+          "id": 8,
+          "partnerName": "Olivia Martinez",
+          "image": "https://randomuser.me/api/portraits/women/4.jpg"
+    },
+    {
+          "id": 9,
+          "partnerName": "Daniel Anderson",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg"
+    },
+    {
+          "id": 10,
+          "partnerName": "Sophia Thomas",
+          "image": "https://randomuser.me/api/portraits/women/5.jpg"
+    },
+    {
+          "id": 11,
+          "partnerName": "James White",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg"
+    },
+    {
+          "id": 12,
+          "partnerName": "Maria Garcia",
+          "image": "https://randomuser.me/api/portraits/women/6.jpg"
+    },
+    {
+          "id": 13,
+          "partnerName": "Richard King",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg"
+    },
+    {
+          "id": 14,
+          "partnerName": "Emily Lewis",
+          "image": "https://randomuser.me/api/portraits/women/7.jpg"
+    },
+    {
+          "id": 15,
+          "partnerName": "David Robinson",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg"
+    },
+    {
+          "id": 16,
+          "partnerName": "Jessica Harris",
+          "image": "https://randomuser.me/api/portraits/women/8.jpg"
+    },
+    {
+          "id": 17,
+          "partnerName": "William Clark",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg"
+    },
+    {
+          "id": 18,
+          "partnerName": "Isabella Walker",
+          "image": "https://randomuser.me/api/portraits/women/9.jpg"
+    },
+    {
+          "id": 19,
+          "partnerName": "Joseph Allen",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg"
+    },
+    {
+          "id": 20,
+          "partnerName": "Grace Young",
+          "image": "https://randomuser.me/api/portraits/women/10.jpg"
+    }
+]

@@ -8,6 +8,7 @@ import FAQ from './FAQ';
 import Contact from './Contact';
 import About from './About';
 import Newslatter from '../../components/Newsletter/Newsletter';
+import Patners from '../../components/Patners/Patners';
 
 const Home = () => {
     useEffect(() => {
@@ -27,6 +28,7 @@ const Home = () => {
             <Feedback></Feedback>
             <About></About>
             <Newslatter></Newslatter>
+            <Patners></Patners>
             <Contact></Contact>
             <FAQ></FAQ>
         </div>

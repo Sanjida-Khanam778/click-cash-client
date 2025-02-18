@@ -157,7 +157,7 @@ const DashboardLayout = () => {
           <div className="flex items-center gap-4 md:gap-8">
             <div className="flex flex-col items-end">
               <div className="flex p-1">
-                <button className="flex items-center px-4 bg-transparent border-r-2 border-black font-bold">
+                <button className="flex items-center px-4 bg-transparent font-bold">
                   <TbCoinFilled className="text-xl md:text-3xl text-[#f1e027] mr-1" />
                   {coin}
                 </button>
@@ -168,12 +168,7 @@ const DashboardLayout = () => {
                   alt="User"
                 />
               </div>
-              <div className="flex p-1">
-                <p className="mr-0 md:mr-3 text-xs md:text-base font-medium">{role}</p>
-                <p className="border-l-2 pl-3 text-xs md:text-base hidden md:block font-medium border-black">
-                  {user?.displayName}
-                </p>
-              </div>
+             
             </div>
             <div className="dropdown dropdown-bottom dropdown-end">
               <div tabIndex={0} role="button" className=" m-1">
@@ -225,7 +220,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Sidebar/Drawer */}
-        <div className="drawer-side mt-20 fixed h-screen lg:pt-20 lg:mt-0">
+        <div className="drawer-side fixed h-screen lg:pt-16 lg:mt-0">
           <label
             htmlFor="dashboard-drawer"
             className="drawer-overlay"
