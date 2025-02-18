@@ -15,9 +15,9 @@ const BestWorkers = () => {
   });
 
   return (
-    <div className="w-10/12 mx-auto my-10 lg:my-20">
+    <div className="w-11/12 mx-auto my-10 lg:my-20">
       <SharedTitle title={"Top 6 Workers"}></SharedTitle>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
         {workers.map((worker) => (
           <div
             data-aos="fade-up"

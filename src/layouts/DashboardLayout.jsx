@@ -41,12 +41,12 @@ const DashboardLayout = () => {
               Home
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/dashboard/taskList"}>
               <FaList />
               TaskList
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to={"/dashboard/mySubmissions"}>
               <IoBagAdd />

@@ -15,45 +15,40 @@ import { Pagination, Autoplay } from "swiper/modules";
 const FeedbackSlider = () => {
   const feedbacks = [
     {
-      name: "John Doe",
+      name: "Emily Carter",
       photo: feed1,
-      quote:
-        "This platform is amazing! It has completely changed the way I work and earn.",
+      quote: "This platform is a game-changer! I can now work flexibly from home.",
     },
     {
-      name: "John Doe",
+      name: "Michael Anderson",
       photo: feed2,
-      quote:
-        "This platform is amazing! It has completely changed the way I work and earn.",
+      quote: "The user interface is intuitive, and the earnings are quick and reliable.",
     },
     {
-      name: "John Doe",
+      name: "Sophia Martinez",
       photo: feed3,
-      quote:
-        "This platform is amazing! It has completely changed the way I work and earn.",
+      quote: "I appreciate how organized and well-managed the tasks are. Great experience!",
     },
     {
-      name: "John Doe",
+      name: "David Brown",
       photo: feed4,
-      quote:
-        "This platform is amazing! It has completely changed the way I work and earn.",
+      quote: "The transparency in payments and the ease of use is top-notch!",
     },
     {
       name: "Jane Smith",
       photo: feed5,
-      quote:
-        "I love how easy it is to use and how quickly I can start earning money.",
+      quote: "I love how easy it is to use and how quickly I can start earning money.",
     },
     {
       name: "Robert Johnson",
       photo: feed6,
-      quote:
-        "The best part is how supportive the community is. Highly recommended!",
+      quote: "The best part is how supportive the community is. Highly recommended!",
     },
   ];
+  
 
   return (
-    <div className="my-10 p-5 mx-auto w-11/12">
+    <div className="my-10 py-5 mx-auto w-11/12">
       <h2 className="text-center text-2xl font-bold mb-6">
         What Our Users Say
       </h2>

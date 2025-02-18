@@ -11,7 +11,7 @@ const FAQ = () => {
   //     AOS.refresh();
   //   }, []);
   return (
-    <div className="my-10 lg:my-24 w-10/12 mx-auto">
+    <div className="my-10 lg:my-24 w-11/12 mx-auto">
       <div className="flex flex-col justify-center items-center">
         <h2
           data-aos="fade-up"

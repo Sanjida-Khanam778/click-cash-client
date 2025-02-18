@@ -15,7 +15,7 @@ const Profile = () => {
             className="w-20 h-20 rounded-full"
           />
           <div>
-            <h2 className="text-2xl font-bold text-gray-800">{user.displayName}</h2>
+            <h2 className="text-2xl font-bold text-gray-800">{user?.displayName}</h2>
             <p className="text-sm text-gray-600">{user?.email}</p>
           </div>
         </div>

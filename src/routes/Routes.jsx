@@ -38,11 +38,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
       },
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "taskList",
+        element: <PrivateRoute><TaskList></TaskList></PrivateRoute>,
+      },
+      {
+        path: "taskDetails/:id",
+        element: <PrivateRoute><TaskDetails></TaskDetails></PrivateRoute>,
       },
 
       { path: "/login", element: <Login /> },
@@ -77,14 +85,14 @@ export const router = createBrowserRouter([
         path: "mySubmissions",
         element: <WorkerRoute><MySubmissions></MySubmissions></WorkerRoute>,
       },
-      {
-        path: "taskList",
-        element: <WorkerRoute><TaskList></TaskList></WorkerRoute>,
-      },
-      {
-        path: "taskDetails/:id",
-        element: <WorkerRoute><TaskDetails></TaskDetails></WorkerRoute>,
-      },
+      // {
+      //   path: "taskList",
+      //   element: <WorkerRoute><TaskList></TaskList></WorkerRoute>,
+      // },
+      // {
+      //   path: "taskDetails/:id",
+      //   element: <WorkerRoute><TaskDetails></TaskDetails></WorkerRoute>,
+      // },
       {
         path: "withdrawals",
         element: <WorkerRoute><Withdrawals></Withdrawals></WorkerRoute>,

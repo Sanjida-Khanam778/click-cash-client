@@ -92,7 +92,7 @@ const TaskDetails = () => {
   };
 
   return (
-    <div className="my-10 lg:my-20 w-10/12 lg:w-3/4 mx-auto">
+    <div className="my-10 w-11/12 mx-auto">
       {/* Task Details */}
       <SharedTitle title={"Task Details"} subtitle={""}></SharedTitle>
       <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mb-4 lg:mb-10 ">

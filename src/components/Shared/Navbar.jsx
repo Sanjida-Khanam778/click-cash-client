@@ -7,7 +7,6 @@ import { TbCoinFilled } from "react-icons/tb";
 import useCoin from "../../hooks/useCoin";
 import { CgSpinnerAlt } from "react-icons/cg";
 import { BiLogOutCircle } from "react-icons/bi";
-import { FaHamburger } from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
 
 const Navbar = () => {
@@ -18,30 +17,42 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li className="lg:block hidden">
-        /
-      </li>
-      <li>
-        <NavLink to={"/profile"}>Profile</NavLink>
-      </li>
-      <li className="lg:block hidden">
+      <li className="xl:block hidden">
         /
       </li>
       <li>
         <NavLink to={"/blog"}>Blog</NavLink>
       </li>
-      <li className="lg:block hidden">
+      <li className="xl:block hidden">
         /
       </li>
+     
+      
+    
       {user && user?.email && (
         <>
+         <li>
+        <NavLink to={"/taskList"}>TaskList</NavLink>
+      </li>
+      <li className="xl:block hidden">
+        /
+      </li>
+        {/* <li>
+        <NavLink to={"/profile"}>Profile</NavLink>
+      </li>
+      <li className="xl:block hidden">
+        /
+      </li> */}
           <li>
             <NavLink to={"/dashboard"}>Dashboard</NavLink>
           </li>
-          <li className="lg:block hidden">
+          <li className="xl:block hidden">
         /
       </li>
-          <li className="ml-3 md:ml-0 block " onClick={() =>
+          
+        </>
+      )}
+       <li className="ml-3 md:ml-0 block " onClick={() =>
                 window.open(
                   "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
                   "_blank"
@@ -51,9 +62,9 @@ const Navbar = () => {
               <button>Join as Developer</button>
            
           </li>
-        </>
-      )}
+        
     </>
+
   );
 
   return (
@@ -127,7 +138,7 @@ const Navbar = () => {
                   </button>
                 </Link>
                 <Link className="" to={"/signup"}>
-                  <button className="btn rounded-md px-2 md:px-4 hover:bg-black text-white border-none">
+                  <button className="btn py-1 text-black rounded-md px-2 md:px-4 border-black hover:bg-black hover:text-white bg-transparent">
                     Register
                   </button>
                 </Link>
