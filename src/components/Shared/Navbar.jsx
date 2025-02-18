@@ -18,6 +18,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
+      <li>
+        <NavLink to={"/profile"}>Profile</NavLink>
+      </li>
       {user && user?.email && (
         <>
           <li>
@@ -104,7 +107,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Link className="mx-3" to={"/login"}>
-                  <button className="btn text-black rounded-md px-2 md:px-4 border-black bg-transparent">
+                  <button className=" btn py-1 text-black rounded-md px-2 md:px-4 border-black bg-transparent">
                     Login
                   </button>
                 </Link>

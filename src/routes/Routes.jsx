@@ -24,6 +24,7 @@ import WorkerHome from "../pages/Dashboard/Worker/WorkerHome/WorkerHome";
 import WorkerRoute from "./WorkerRoute";
 import BuyerRoute from "./BuyerRoute";
 import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome"
+import Profile from "../pages/Profile/Profile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
 
       { path: "/login", element: <Login /> },

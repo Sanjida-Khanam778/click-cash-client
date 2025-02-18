@@ -18,6 +18,7 @@ const WorkerStates = () => {
       return data;
     },
   });
+  
   const { totalSubmissionCount, totalPendingSubmissionCount, totalEarning } =
     states;
   return (

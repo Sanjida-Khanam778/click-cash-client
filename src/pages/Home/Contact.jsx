@@ -1,4 +1,12 @@
 const Contact = () => {
+const handleSubmit=e=>{
+
+    e.preventDefault();
+    toast.success("Newsletter subscription successful!")
+    e.target.reset()
+
+
+}
     return (
       <section className="bg-[#FBF5E5] py-12">
         <div className="container mx-auto px-6 lg:px-20">
@@ -7,7 +15,7 @@ const Contact = () => {
           </h2>
           <div className="flex flex-col lg:flex-row justify-between items-center gap-12">
             {/* Contact Form */}
-            <form className="w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-md">
+            <form onSubmit={handleSubmit} className="w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-md">
               <div className="mb-6">
                 <label
                   htmlFor="name"
@@ -18,6 +26,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="name"
+                  required
                   placeholder="Enter your name"
                   className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#A35C7A]"
                 />
@@ -32,6 +41,7 @@ const Contact = () => {
                 <input
                   type="email"
                   id="email"
+                  required
                   placeholder="Enter your email"
                   className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#A35C7A]"
                 />
@@ -45,6 +55,7 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
+                  required
                   rows="5"
                   placeholder="Enter your message"
                   className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#A35C7A]"
