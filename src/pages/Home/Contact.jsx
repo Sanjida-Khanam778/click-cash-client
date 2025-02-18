@@ -10,21 +10,22 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-[#FBF5E5] py-8 ">
+    <section className="{` py-8 ${theme==='dark'?'bg-black/65':'bg-[#FBF5E5]'}`}">
       <div className="container w-11/12 mx-auto">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-2xl font-bold text-center  mb-6">
           Contact Us
         </h2>
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
           {/* Contact Form */}
-          <form
+         <div className="border w-full lg:w-1/2 p-6 rounded-lg shadow-md">
+         <form
             onSubmit={handleSubmit}
-            className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-md"
+            className="{` ${theme==='dark'?'bg-black/65':'bg-[#FBF5E5]'} border`}"
           >
             <div className="mb-4">
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium  mb-1"
               >
                 Your Name
               </label>
@@ -39,7 +40,7 @@ const Contact = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium  mb-1"
               >
                 Your Email
               </label>
@@ -54,7 +55,7 @@ const Contact = () => {
             <div className="mb-4">
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium  mb-1"
               >
                 Message
               </label>
@@ -73,13 +74,14 @@ const Contact = () => {
               Send Message
             </button>
           </form>
+         </div>
 
           {/* Contact Information */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">
+            <h3 className="text-xl font-bold  mb-3">
               Get In Touch
             </h3>
-            <p className="text-gray-600 mb-3 text-sm">
+            <p className=" mb-3 text-sm">
               Have questions? We'd love to hear from you. Feel free to reach
               out!
             </p>

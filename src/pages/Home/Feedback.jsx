@@ -48,7 +48,7 @@ const FeedbackSlider = () => {
   
 
   return (
-    <div className="my-10 py-5 mx-auto w-11/12">
+    <div className="my-10 py-5 mx-auto w-11/12 ">
       <h2 className="text-center text-2xl font-bold mb-6">
         What Our Users Say
       </h2>
@@ -86,14 +86,14 @@ const FeedbackSlider = () => {
       >
         {feedbacks.map((feedback, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col items-center text-center p-5 shadow-lg rounded-lg bg-gray-50">
+            <div className="flex flex-col items-center text-center p-5 shadow-lg rounded-lg border">
               <img
                 src={feedback.photo}
                 alt={feedback.name}
                 className="rounded-full w-24 h-24 object-cover mb-4"
               />
               <h3 className="text-lg font-semibold">{feedback.name}</h3>
-              <p className="text-gray-600 mt-3">{feedback.quote}</p>
+              <p className="{  `mt-3 ${theme==='dark'?'text-white':'text-gray-600'}`}">{feedback.quote}</p>
             </div>
           </SwiperSlide>
         ))}

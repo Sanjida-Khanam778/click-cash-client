@@ -2,10 +2,12 @@ import React from "react";
 import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
 import logoFooter from "../../assets/logo-footer.png";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Footer = () => {
+  const {theme} = useAuth()
   return (
-    <footer className="bg-[#f3e8ce]">
+    <footer className={`${theme==='dark'?'bg-black/65':'bg-[#FBF5E5]'}`}>
       {/* Top Section */}
       <div className="flex flex-col items-center text-center px-4 lg:px-10 py-6 space-y-4">
         {/* Logo Section */}
@@ -22,7 +24,7 @@ const Footer = () => {
         </div>
 
         {/* Description */}
-        <p className="text-sm md:text-base text-black text-opacity-70 max-w-md">
+        <p className="text-sm md:text-base max-w-md">
           Turn your time into earnings with ClickCash! Complete simple tasks
           and get paid instantly.
         </p>
@@ -65,7 +67,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-black/40 py-3">
+      <div className="border-t-2 border-base-300 py-3">
         <p className="text-center font-bold text-xs md:text-sm">
           Copyright © {new Date().getFullYear()} - All rights reserved
         </p>

@@ -26,6 +26,7 @@ import BuyerRoute from "./BuyerRoute";
 import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome"
 import Profile from "../pages/Profile/Profile";
 import Blog from "../pages/Home/blog";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -36,10 +37,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/profile",
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
-      },
+    
       {
         path: "/blog",
         element: <Blog></Blog>,
@@ -70,6 +68,10 @@ export const router = createBrowserRouter([
         element: <MyHome></MyHome>,
       },
       {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+      {
         path: "workerHome",
         element: <WorkerRoute><WorkerHome></WorkerHome></WorkerRoute>,
       },
@@ -85,14 +87,6 @@ export const router = createBrowserRouter([
         path: "mySubmissions",
         element: <WorkerRoute><MySubmissions></MySubmissions></WorkerRoute>,
       },
-      // {
-      //   path: "taskList",
-      //   element: <WorkerRoute><TaskList></TaskList></WorkerRoute>,
-      // },
-      // {
-      //   path: "taskDetails/:id",
-      //   element: <WorkerRoute><TaskDetails></TaskDetails></WorkerRoute>,
-      // },
       {
         path: "withdrawals",
         element: <WorkerRoute><Withdrawals></Withdrawals></WorkerRoute>,

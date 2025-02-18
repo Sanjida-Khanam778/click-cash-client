@@ -75,7 +75,17 @@ const AuthProvider = ({ children }) => {
     }
   }, [axiosPublic])
 
+  const [theme, setTheme] = useState("light");
+
+  const handleToggle = (e) => {
+    const newTheme = e.target.checked ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
   const authInfo = {
+    theme,
+    handleToggle,
     user,
     setUser,
     loading,

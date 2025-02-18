@@ -48,10 +48,10 @@ const Blog = () => {
 
           {/* Content */}
           <div className="p-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold  mb-4">
               Click Cash will bring you extra income!
             </h2>
-            <p className="text-gray-600 text-base md:text-lg">
+            <p className=" text-base md:text-lg">
               Earn extra income from your app and invite developers to join
               Click Cash.
             </p>
@@ -77,10 +77,10 @@ const Blog = () => {
 
             {/* Blog Content */}
             <div className="flex flex-col justify-center p-4 md:w-2/3">
-              <h2 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 hover:text-[#A35C7A] transition duration-200">
+              <h2 className="text-lg md:text-xl font-semibold  mb-2 hover:text-[#A35C7A] transition duration-200">
                 {blog.title}
               </h2>
-              <p className="text-gray-600 text-sm mb-2">{blog.summary}</p>
+              <p className=" text-sm mb-2">{blog.summary}</p>
               <p className="text-gray-400 text-xs">
                 By {blog.author} | {blog.date}
               </p>

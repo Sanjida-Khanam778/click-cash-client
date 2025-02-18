@@ -6,65 +6,44 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { TbCoinFilled } from "react-icons/tb";
 import useCoin from "../../hooks/useCoin";
 import { CgSpinnerAlt } from "react-icons/cg";
-import { BiLogOutCircle } from "react-icons/bi";
+import { BiLogOutCircle, BiMoon, BiSun } from "react-icons/bi";
 import { HiMenu } from "react-icons/hi";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  const [coin, isLoading, refetch] = useCoin();
+  const { user, logOut, theme, handleToggle } = useContext(AuthContext);
+  const [coin, isLoading] = useCoin();
   const links = (
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li className="xl:block hidden">
-        /
-      </li>
       <li>
         <NavLink to={"/blog"}>Blog</NavLink>
       </li>
-      <li className="xl:block hidden">
-        /
-      </li>
-     
-      
-    
+
       {user && user?.email && (
         <>
-         <li>
-        <NavLink to={"/taskList"}>TaskList</NavLink>
-      </li>
-      <li className="xl:block hidden">
-        /
-      </li>
-        {/* <li>
-        <NavLink to={"/profile"}>Profile</NavLink>
-      </li>
-      <li className="xl:block hidden">
-        /
-      </li> */}
+          <li>
+            <NavLink to={"/taskList"}>TaskList</NavLink>
+          </li>
+
           <li>
             <NavLink to={"/dashboard"}>Dashboard</NavLink>
           </li>
-          <li className="xl:block hidden">
-        /
-      </li>
-          
         </>
       )}
-       <li className="ml-3 md:ml-0 block " onClick={() =>
-                window.open(
-                  "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
-                  "_blank"
-                )
-              }>
-            
-              <button>Join as Developer</button>
-           
-          </li>
-        
+      <li
+        className="ml-3 md:ml-0 block "
+        onClick={() =>
+          window.open(
+            "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
+            "_blank"
+          )
+        }
+      >
+        <button>Join as Developer</button>
+      </li>
     </>
-
   );
 
   return (
@@ -77,7 +56,7 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost lg:hidden px-0 pr-2"
             >
-             <HiMenu className="text-2xl"></HiMenu>
+              <HiMenu className="text-2xl"></HiMenu>
             </div>
             <ul
               tabIndex={0}
@@ -94,12 +73,23 @@ const Navbar = () => {
             <p className="tracking-widest hidden md:block">
               Click<span className="text-[#A35C7A]"> Cash</span>
             </p>
-          </Link> 
+          </Link>
         </div>
         <div>
           <div className=" lg:justify-end hidden lg:flex">
             <ul className={`flex gap-5 px-1 font-bold`}>{links}</ul>
           </div>
+          <div className={`flex items-center xl:mx-2`}>
+                  <BiSun className="mr-1 text-xl hidden md:block"></BiSun>
+
+                  <input
+                    type="checkbox"
+                    value={theme}
+                    onChange={handleToggle}
+                    className={`toggle theme-controller mr-1 `}
+                  />
+                  <BiMoon className="text-xl hidden md:block"></BiMoon>
+                </div>
           <div className="flex">
             {user && user?.email ? (
               <>
@@ -111,6 +101,7 @@ const Navbar = () => {
                     {coin}
                   </button>
                 )}
+               
                 <div className="relative group mr-3 flex md:flex-col items-center">
                   <img
                     referrerPolicy="no-referrer"
@@ -133,18 +124,17 @@ const Navbar = () => {
             ) : (
               <>
                 <Link className="mx-3" to={"/login"}>
-                  <button className=" btn py-1 text-black rounded-md px-2 md:px-4 border-black hover:bg-black hover:text-white bg-transparent">
+                  <button className="{`btn py-1 rounded-md px-2 md:px-4 btn-outline border hover:bg-black hover:text-white bg-transparent` ${theme==='dark'?'text-white':'bg-[#FBF5E5]'}}">
                     Login
                   </button>
                 </Link>
                 <Link className="" to={"/signup"}>
-                  <button className="btn py-1 text-black rounded-md px-2 md:px-4 border-black hover:bg-black hover:text-white bg-transparent">
+                  <button className="{`btn py-1 rounded-md px-2 md:px-4 btn-outline border hover:bg-black hover:text-white bg-transparent`}">
                     Register
                   </button>
                 </Link>
               </>
             )}
-            
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ const FAQ = () => {
           Frequently Asked Questions
         </h2>
         <p
-          className="text-gray-600 font-medium mb-4 md:mb-10 mt-2 text-center"
+          className=" font-medium mb-4 md:mb-10 mt-2 text-center"
           data-aos="fade-up"
           data-aos-delay="500"
           data-aos-once="false"

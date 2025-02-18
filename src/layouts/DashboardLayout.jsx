@@ -22,11 +22,14 @@ import useRole from "../hooks/useRole";
 import Footer from "../components/Shared/Footer";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { MdAddCircle, MdPayment } from "react-icons/md";
+import { BiMoon, BiSun } from "react-icons/bi";
+
 
 const DashboardLayout = () => {
+  
   const axiosSecure = useAxiosSecure();
   const [notifications, setNotifications] = useState([]);
-  const { user } = useAuth();
+  const { user, theme, handleToggle } = useAuth();
   const [coin] = useCoin();
   const [role] = useRole();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -98,7 +101,6 @@ const DashboardLayout = () => {
       )}
       {role === "Admin" && (
         <>
-      
           <li>
             <NavLink to={"/dashboard/adminHome"}>
               <FaHome />
@@ -139,11 +141,9 @@ const DashboardLayout = () => {
             >
               <HiMenuAlt3 className="text-2xl md:text-4xl" />
             </button>
-            <Link to={'/'}><img
-              className="h-7 md:h-9 mr-2 md:mr-4"
-              src={logo}
-              alt=""
-            /></Link>
+            <Link to={"/"}>
+              <img className="h-7 md:h-9 mr-2 md:mr-4" src={logo} alt="" />
+            </Link>
             <Link
               to={"/"}
               className="font-bold font-logoFont text-xl md:text-2xl xl:text-4xl text-logoFont"
@@ -151,16 +151,22 @@ const DashboardLayout = () => {
               <p className="tracking-widest hidden md:block">
                 Click<span className="text-[#A35C7A]"> Cash</span>
               </p>
-              
             </Link>
           </div>
           <div className="flex items-center gap-4 md:gap-8">
             <div className="flex flex-col items-end">
               <div className="flex p-1">
+                <button className="">
+
+                  <NavLink to={"/dashboard/profile"}>Profile</NavLink>
+                </button>
+                
+
                 <button className="flex items-center px-4 bg-transparent font-bold">
                   <TbCoinFilled className="text-xl md:text-3xl text-[#f1e027] mr-1" />
                   {coin}
                 </button>
+               
                 <img
                   referrerPolicy="no-referrer"
                   src={user?.photoURL}
@@ -168,7 +174,6 @@ const DashboardLayout = () => {
                   alt="User"
                 />
               </div>
-             
             </div>
             <div className="dropdown dropdown-bottom dropdown-end">
               <div tabIndex={0} role="button" className=" m-1">
@@ -184,7 +189,7 @@ const DashboardLayout = () => {
               </div>
               <div
                 tabIndex={0}
-                className="dropdown-content card card-compact bg-white z-[1] w-64 overflow-y-auto h-80 md:h-auto lg:w-96 p-2 shadow border"
+                className="dropdown-content card card-compact z-[1] w-64 overflow-y-auto h-80 md:h-auto lg:w-96 p-2 shadow border"
               >
                 <h3 className="card-title p-3">Notifications</h3>
                 <div className="card-body">
@@ -208,7 +213,7 @@ const DashboardLayout = () => {
           checked={isDrawerOpen}
           onChange={(e) => setIsDrawerOpen(e.target.checked)}
         />
-        
+
         <div className="drawer-content flex flex-col ">
           {/* Main Content */}
           <div className="flex flex-col justify-between min-h-screen pt-16">
@@ -226,7 +231,7 @@ const DashboardLayout = () => {
             className="drawer-overlay"
             onClick={() => setIsDrawerOpen(false)}
           ></label>
-          <ul className="menu p-4 pt-6 w-80 bg-[#e9ddbf] h-full text-black">
+          <ul className="menu p-4 pt-6 w-80 bg-[#e9ddbf] h-full ">
             {menuItems}
           </ul>
         </div>

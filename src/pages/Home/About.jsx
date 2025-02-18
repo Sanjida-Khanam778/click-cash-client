@@ -24,20 +24,20 @@ const About = () => {
             data-aos="fade-left"
             data-aos-once="false"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
-            <p className="text-gray-600 mb-6 text-justify">
+            <h2 className="text-3xl font-bold mb-4">About Us</h2>
+            <p className="mb-6 text-justify">
               We are passionate about delivering exceptional solutions to our
               clients. Our team is dedicated to achieving excellence in
               everything we do, ensuring you get the best service possible. We
               strive to innovate and adapt to meet your needs.
             </p>
-            <p className="text-gray-600 mb-6 text-justify">
+            <p className="mb-6 text-justify">
               Our mission is to create value and make a positive impact on our
               customers, community, and the world at large. With years of
               experience, we have built a reputation for reliability and
               quality.
             </p>
-            <p className="text-gray-600 mb-6 text-justify">
+            <p className="mb-6 text-justify">
               Customer satisfaction is at the heart of our business. We believe
               in building long-term relationships by delivering consistent
               results and exceeding expectations. Our team works tirelessly to
