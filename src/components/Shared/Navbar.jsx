@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import "./Navbar.css";
+import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { TbCoinFilled } from "react-icons/tb";
@@ -21,19 +21,22 @@ const Navbar = () => {
       <li>
         <NavLink to={"/profile"}>Profile</NavLink>
       </li>
+      <li>
+        <NavLink to={"/blog"}>Blog</NavLink>
+      </li>
       {user && user?.email && (
         <>
           <li>
             <NavLink to={"/dashboard"}>Dashboard</NavLink>
           </li>
-          <li className="ml-3 block md:hidden" onClick={() =>
+          <li className="ml-3 lg:ml-0 block " onClick={() =>
                 window.open(
                   "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
                   "_blank"
                 )
               }>
             
-              Join as Developer
+              <button>Join as Developer</button>
            
           </li>
         </>
@@ -81,7 +84,7 @@ const Navbar = () => {
                   <CgSpinnerAlt className="animate-spin m-auto" />
                 ) : (
                   <button className=" flex items-center px-4 bg-transparent font-bold">
-                    <TbCoinFilled className="text-3xl text-[#f1e027] mr-1" />
+                    <TbCoinFilled className="text-2xl text-[#f1e027] mr-1" />
                     {coin}
                   </button>
                 )}
@@ -107,28 +110,18 @@ const Navbar = () => {
             ) : (
               <>
                 <Link className="mx-3" to={"/login"}>
-                  <button className=" btn py-1 text-black rounded-md px-2 md:px-4 border-black bg-transparent">
+                  <button className=" btn py-1 text-black rounded-md px-2 md:px-4 border-black hover:bg-black hover:text-white bg-transparent">
                     Login
                   </button>
                 </Link>
                 <Link className="" to={"/signup"}>
-                  <button className="btn rounded-md px-2 md:px-4 bg-[#A35C7A] hover:bg-[#A35C7A] text-white border-none">
+                  <button className="btn rounded-md px-2 md:px-4 hover:bg-black text-white border-none">
                     Register
                   </button>
                 </Link>
               </>
             )}
-            <button
-              onClick={() =>
-                window.open(
-                  "https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Sanjida-Khanam778",
-                  "_blank"
-                )
-              }
-              className="btn btn-outline ml-3 hidden rounded-md md:block"
-            >
-              Join as Developer
-            </button>
+            
           </div>
         </div>
       </div>

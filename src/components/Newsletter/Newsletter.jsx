@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 
 const Newslatter = () => {
 
-
       const handleNewsLatterSignIn = (e) => {
             e.preventDefault();
             toast.success("Newsletter subscription successful!")

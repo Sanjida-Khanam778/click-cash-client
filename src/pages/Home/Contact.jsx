@@ -86,7 +86,7 @@ const Contact = () => {
                 <span className="text-blue-500 mr-3">
                   <i className="fas fa-phone-alt"></i>
                 </span>
-                <span>+880 1684785544</span>
+                <span>+880 1684796244</span>
               </li>
               <li className="flex items-center justify-center lg:justify-start">
                 <span className="text-blue-500 mr-3">
@@ -98,7 +98,7 @@ const Contact = () => {
                 <span className="text-blue-500 mr-3">
                   <i className="fas fa-map-marker-alt"></i>
                 </span>
-                <span>123 Main Street, Dhaka, Bangladesh</span>
+                <span>Main Street, Dhaka, Bangladesh</span>
               </li>
             </ul>
           </div>

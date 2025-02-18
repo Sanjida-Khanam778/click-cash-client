@@ -25,6 +25,7 @@ import WorkerRoute from "./WorkerRoute";
 import BuyerRoute from "./BuyerRoute";
 import BuyerHome from "../pages/Dashboard/Buyer/BuyerHome/BuyerHome"
 import Profile from "../pages/Profile/Profile";
+import Blog from "../pages/Home/blog";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
 
       { path: "/login", element: <Login /> },
