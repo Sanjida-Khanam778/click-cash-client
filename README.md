@@ -9,7 +9,7 @@ Click Care is a Micro-Task and Earning Platform designed to connect workers and 
 ## Admin Details
 - **Admin Username:** Sanjida Khanam
 - **Admin Email:** clickcare@gmail.com
-- **Admin Password:** Admin12
+- **Admin Password:** Admin12 
 
 > **Note:** Ensure to change admin credentials after deployment for security.
 
