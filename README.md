@@ -1,4 +1,4 @@
- # Micro-Task and Earning Platform (Click Care) 
+# Micro-Task and Earning Platform (Click Care) 
  
 ## Overview
 Click Care is a Micro-Task and Earning Platform designed to connect workers and buyers in a streamlined environment. Workers can complete small tasks to earn rewards, while buyers can manage tasks and payments efficiently. The platform offers secure and categorized roles, ensuring a reliable experience for all users.
