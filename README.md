@@ -3,7 +3,7 @@
 ## Overview
 Click Care is a Micro-Task and Earning Platform designed to connect workers and buyers in a streamlined environment. Workers can complete small tasks to earn rewards, while buyers can manage tasks and payments efficiently. The platform offers secure and categorized roles, ensuring a reliable experience for all users.
 
-## Live Site 
+## Live Site  
 [Click Care Live Site](https://click-cash-9fbe3.web.app) 
  
 ## Admin Details
