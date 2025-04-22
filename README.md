@@ -7,7 +7,7 @@ Click Care is a Micro-Task and Earning Platform designed to connect workers and 
 [Click Care Live Site](https://click-cash-9fbe3.web.app) 
  
 ## Admin Details
-- **Admin Username:** Sanjida Khanam
+- **Admin Username:** Sanjida Khanam 
 - **Admin Email:** clickcare@gmail.com
 - **Admin Password:** Admin12 
  
